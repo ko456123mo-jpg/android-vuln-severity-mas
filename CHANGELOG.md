@@ -137,5 +137,5 @@
 - أرقام الأداء في `results/benchmark.md` و`results/load_test.md` مقيسة في وضع
   Mock وتُعلَن حدودها الدنيا صراحةً في التقرير نفسه.
 
-[Unreleased]: https://github.com/REPLACE-WITH-ORGANIZATION/android-vuln-severity-mas/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/REPLACE-WITH-ORGANIZATION/android-vuln-severity-mas/releases/tag/v1.0.0
+[Unreleased]: https://github.com/ko456123mo-jpg/android-vuln-severity-mas/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/ko456123mo-jpg/android-vuln-severity-mas/releases/tag/v1.0.0

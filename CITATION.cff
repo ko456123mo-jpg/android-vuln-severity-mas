@@ -13,8 +13,8 @@ abstract: >-
 type: software
 version: 1.0.0
 license: MIT
-repository-code: "https://github.com/REPLACE-WITH-ORGANIZATION/android-vuln-severity-mas"
-url: "https://github.com/REPLACE-WITH-ORGANIZATION/android-vuln-severity-mas"
+repository-code: "https://github.com/ko456123mo-jpg/android-vuln-severity-mas"
+url: "https://github.com/ko456123mo-jpg/android-vuln-severity-mas"
 date-released: "2026-10-12"
 keywords:
   - android
