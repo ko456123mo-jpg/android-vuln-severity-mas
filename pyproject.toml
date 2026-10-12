@@ -30,6 +30,10 @@ dependencies = [
     "python-dotenv>=1.0",
     # ── LLM / Agents (Hybrid: Ollama + Groq + Gemini) ─────────────
     "langgraph>=0.2",
+    # مُخزّن نقاط التحقّق على SQLite (استئناف الفحوص) — حزمة مستقلة عن langgraph
+    # منذ الإصدارات الحديثة؛ كانت تأتي مدمجة قبلها وهذا إصلاح اعتمادية موثّق.
+    "langgraph-checkpoint-sqlite>=2.0",
+    "aiosqlite>=0.19",
     "langchain>=0.3",
     "langchain-core>=0.3",
     "langchain-anthropic>=0.2",

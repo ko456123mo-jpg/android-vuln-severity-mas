@@ -51,6 +51,9 @@ REQUIRED: tuple[str, ...] = (
     "docs/security_guardrails.md", "docs/rag_architecture.md",
     "docs/evaluation_protocol.md", "docs/ui_guide.md", "docs/deployment_notes.md",
     "docs/phase7_deliverable.md", "docs/phase8_deliverable.md",
+    "INSTALL_DOCKER.md", "docs/rag_architecture.md",
+    "assets/logo/logo.svg", "assets/logo/logo-icon.svg", "assets/logo/favicon.ico",
+    "assets/logo/BRAND_GUIDE.md", "assets/logo/preview.html", "assets/logo/usage-dos-donts.svg",
     # الأطروحة
     "docs/thesis/appendix_a_prompts.md", "docs/thesis/appendix_b_rules.md",
     "docs/thesis/appendix_c_decision_log.md", "docs/thesis/appendix_d_metrics.md",

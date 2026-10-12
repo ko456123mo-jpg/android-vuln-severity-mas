@@ -44,6 +44,7 @@ REQUIRED_PAGES = tuple(f"{index:02d}_{name}.py" for index, name in (
     (5, "assessment_detail"), (6, "review_queue"), (7, "reports"), (8, "evaluation"),
 ))
 REQUIRED_DOCS = (
+    # ملاحظة: أي ملف يُضاف هنا يصبح شرطاً لبناء حزمة الإصدار (make_release) أيضاَ
     "README.md", "docs/api_reference.md", "docs/ui_guide.md", "docs/scoring_logic.md",
     "docs/mcp_design.md", "docs/security_guardrails.md", "docs/rag_architecture.md",
     "docs/evaluation_protocol.md", "docs/security_hardening.md", "docs/user_manual.md",
@@ -51,6 +52,10 @@ REQUIRED_DOCS = (
     "docs/thesis/appendix_b_rules.md", "docs/thesis/appendix_c_decision_log.md",
     "docs/thesis/appendix_d_metrics.md", "docs/thesis/limitations_and_future_work.md",
     "evaluation/protocol.md",
+    # تسليم v1.0: دليل Docker + الهوية البصرية + مواد النشر
+    "INSTALL_DOCKER.md", "docs/deployment_notes.md", "docs/rag_architecture.md",
+    "assets/logo/BRAND_GUIDE.md", "assets/logo/logo.svg", "assets/logo/logo-icon.svg",
+    "assets/logo/favicon.ico", "assets/logo/preview.html",
 )
 SKIP_SCAN_DIRS = {".git", ".venv", "venv", "__pycache__", "node_modules", ".pytest_cache",
                   "data", "results", ".ruff_cache", ".mypy_cache"}

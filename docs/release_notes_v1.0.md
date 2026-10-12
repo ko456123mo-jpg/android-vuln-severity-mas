@@ -25,6 +25,7 @@
 | رسوم الأطروحة | **5** مخططات Mermaid (SVG + PNG + معاينات Markdown) |
 | صيغ التقارير | **6** (MD/HTML/PDF × فني/تنفيذي) |
 | قوالب البرومبت | **7** (لا برومبت مخفي في الكود) |
+| ملفات الهوية البصرية | **14** (6 SVG + 6 PNG/ICO + دليل + معاينة) — مولَّدة آلياً |
 
 ## 3) أبرز ما في الإصدار
 
@@ -94,7 +95,9 @@ make run-ui         # http://localhost:8501
 make docker-build && make docker-up
 ```
 
-الدليل الكامل: `docs/user_manual.md` · النشر: `docs/deployment_notes.md`.
+الدليل الكامل: `docs/user_manual.md` · النشر: `docs/deployment_notes.md` ·
+Docker خطوة بخطوة (16 خطأً شائعاً مع الحلول): `INSTALL_DOCKER.md` ·
+الهوية البصرية: `assets/logo/BRAND_GUIDE.md`.
 
 ## 7) المعروف والمقيّد (مدفوع إلى v2)
 
