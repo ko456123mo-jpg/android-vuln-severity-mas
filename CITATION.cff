@@ -1,0 +1,59 @@
+# Citation File Format (CFF) 1.2.0 — https://citation-file-format.github.io/
+cff-version: 1.2.0
+message: "إذا استخدمت هذا النظام في عمل أكاديمي أو تقني، يُرجى الاستشهاد به كما يلي."
+title: "Android Vulnerability Severity MAS — Multi-Agent System for Android Vulnerability Severity Assessment"
+abstract: >-
+  نظام متعدد الوكلاء (خمسة وكلاء) لتقييم خطورة ثغرات تطبيقات أندرويد وفق OWASP MASVS:
+  تنسيق المهام، استخراج الثغرات بمساعدة استرجاع معرفي (RAG)، تقييم بمعادلة مركّبة
+  موثّقة، مراجعة آلية بثماني قواعد حتمية، وحلقة مراجعة بشرية (HITL) مع تغذية راجعة
+  تُستخدم كأمثلة قليلة (Few-Shot). يتضمّن النظام API كاملة (FastAPI)، وواجهة
+  (Streamlit)، وتقارير فنية وتنفيذية بست صيغ، وبروتوكول تقييم إحصائي (Weighted
+  Cohen's κ، Gwet's AC1، فترات ثقة بووتستراب) بتصميم يمنع نشر أي رقم قبل تعبئة
+  الحقيقة المرجعية يدوياً.
+type: software
+version: 1.0.0
+license: MIT
+repository-code: "https://github.com/REPLACE-WITH-ORGANIZATION/android-vuln-severity-mas"
+url: "https://github.com/REPLACE-WITH-ORGANIZATION/android-vuln-severity-mas"
+date-released: "2026-10-12"
+keywords:
+  - android
+  - mobile-security
+  - owasp-masvs
+  - multi-agent-systems
+  - llm
+  - vulnerability-assessment
+  - severity-scoring
+  - retrieval-augmented-generation
+  - human-in-the-loop
+  - inter-rater-agreement
+authors:
+  - family-names: "Moneer"
+    given-names: "Mohammed"
+    name-particle: "Engineer"
+    email: "moh123mon456@gmail.com"
+    city: "Sanaa"
+    country: "YE"
+preferred-citation:
+  type: software
+  title: "Android Vulnerability Severity MAS (v1.0.0)"
+  year: 2026
+  version: 1.0.0
+  license: MIT
+  url: "https://github.com/ko456123mo-jpg/android-vuln-severity-mas"
+  authors:
+    - family-names: "Moneer"
+      given-names: "Mohammed"
+      name-particle: "Engineer"
+      email: "moh123mon456@gmail.com"
+references:
+  - type: standard
+    title: "OWASP Mobile Application Security Verification Standard (MASVS)"
+    authors:
+      - name: "OWASP Foundation"
+    scope: "التصنيف المرجعي لفئات الثغرات وأوزانها في هذا النظام"
+  - type: standard
+    title: "OWASP Mobile Application Security Testing Guide (MASTG)"
+    authors:
+      - name: "OWASP Foundation"
+    scope: "معرّفات الأنماط (MSTG-*) في قاعدة المعرفة"

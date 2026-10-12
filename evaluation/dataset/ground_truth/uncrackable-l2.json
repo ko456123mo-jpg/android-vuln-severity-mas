@@ -1,0 +1,8 @@
+{
+  "app_id": "uncrackable-l2",
+  "app_name": "OWASP UnCrackable Level 2",
+  "filled": false,
+  "expert_count": 0,
+  "instructions": "يُملأ هذا الملف يدوياً بواسطة خبيرين مستقلين ثم مراجع ثالث للخلافات. لكل ثغرة: id (GT-XXX)، title، masvs_category، cwe_id، severity_expert (القرار النهائي)، expert_scores (تقييم كل خبير 0-10)، final_score (المتوسط)، evidence (وصف الدليل)، expert_ids (معرّفا الخبيرين). بعد الإملاء: اضبط filled=true وإلا اعتُبرت التجربة غير صالحة لهذا التطبيق.",
+  "vulnerabilities": []
+}

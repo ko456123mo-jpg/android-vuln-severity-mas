@@ -1,0 +1,20 @@
+# =====================================================================
+# ثيم Streamlit — من لوحة ألوان الهوية الرسمية (assets/logo/BRAND_GUIDE.md)
+# =====================================================================
+[theme]
+primaryColor = "#00B4D8"              # Electric Cyan — العنصر الأول
+backgroundColor = "#0A1929"           # Navy Depth — الخلفية الأساسية
+secondaryBackgroundColor = "#1E2A3A"  # سطح ثانوي (بطاقات/شريط جانبي)
+textColor = "#E0E0E0"                 # Gray Light — نص عالي التباين (13.44:1)
+font = "sans serif"                   # الواجهة عربية RTL (خط النظام العربية)
+
+[server]
+headless = true
+port = 8501
+
+[browser]
+gatherUsageStats = false
+
+[client]
+toolbarMode = "minimal"
+showErrorDetails = false

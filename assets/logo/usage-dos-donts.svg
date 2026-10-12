@@ -1,0 +1,460 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1132 678" width="1132" height="678" role="img" aria-label="Logo usage: do and don't">
+  <title>Logo usage — do &amp; don&#39;t — Android Vulnerability Severity MAS</title>
+  <defs>
+    <!-- تدرّج سطح الدرع: أزرق داكن سيبراني -->
+    <linearGradient id="lg-shield-fill" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0%" stop-color="#132C42"/>
+      <stop offset="55%" stop-color="#0E2233"/>
+      <stop offset="100%" stop-color="#0A1929"/>
+    </linearGradient>
+    <!-- تدرّج حدّ الدرع: سماوي كهربائي -->
+    <linearGradient id="lg-shield-stroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#48CAE4"/>
+      <stop offset="55%" stop-color="#00B4D8"/>
+      <stop offset="100%" stop-color="#0077B6"/>
+    </linearGradient>
+    <!-- تدرّج الأعمدة: سماوي → برتقالي → أحمر (شدة الخطورة) -->
+    <linearGradient id="lg-sev-high" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#FF6B35"/>
+      <stop offset="100%" stop-color="#D62828"/>
+    </linearGradient>
+    <linearGradient id="lg-bar-cool" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#0077B6"/>
+      <stop offset="100%" stop-color="#48CAE4"/>
+    </linearGradient>
+    <!-- توهّج مركزي ناعم حول رأس الأندرويد (بلا مرشّحات — توافق أوسع) -->
+    <radialGradient id="lg-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#00B4D8" stop-opacity="0.30"/>
+      <stop offset="65%" stop-color="#00B4D8" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#00B4D8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1132" height="678" fill="#0A1929"/>
+  <text x="20" y="42" font-family="sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">DO — approved applications</text>
+  <text x="20" y="66" font-family="ui-monospace, monospace" font-size="13" fill="#8FA3B8">Android Vulnerability Severity MAS · Brand v1.0 · assets/logo/</text>
+  <text x="20" y="382" font-family="sans-serif" font-size="22" font-weight="700" fill="#FF6B35">DON&#39;T — misuse</text>
+  <g transform="translate(20 96)">
+    <rect width="258" height="258" rx="18" fill="#0E2233" stroke="#1E3A54"/>
+    <g transform="translate(24 16) scale(0.41)"><g transform="">
+  <!-- الدرع: الأمن والحماية — العنصر الحاوي للهوية -->
+  <g id="lg-shield">
+    <path d="M 138.0 70.0 H 374.0 Q 408.0 70.0 408.0 104.0 V 260.0 C 408.0 356.0 342.0 422.0 256.0 468.0 C 170.0 422.0 104.0 356.0 104.0 260.0 V 104.0 Q 104.0 70.0 138.0 70.0 Z" fill="url(#lg-shield-fill)" stroke="url(#lg-shield-stroke)" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M 164.0 96.0 H 348.0 Q 382.0 96.0 382.0 130.0 V 286.0 C 382.0 382.0 342.0 390.0 256.0 436.0 C 170.0 390.0 130.0 382.0 130.0 286.0 V 130.0 Q 130.0 96.0 164.0 96.0 Z" fill="none" stroke="url(#lg-shield-stroke)" stroke-width="2.4" stroke-opacity="0.28"/>
+  </g>
+  <!-- الحلقة المدارية: تعاون الوكلاء الخمسة + اتجاه الدورة -->
+  <g id="lg-orbit">
+    <path d="M 321.96 203.697 A 66.0 66.0 0 1 1 301.847 158.524" fill="none" stroke="#00B4D8" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.55"/>
+    <!-- الوكيل 1 / node 1 -->
+    <circle cx="195.706" cy="179.155" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="195.706" cy="179.155" r="6.2" fill="#48CAE4"/>
+    <!-- الوكيل 2 / node 2 -->
+    <circle cx="262.899" cy="140.362" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="262.899" cy="140.362" r="6.2" fill="#48CAE4"/>
+    <!-- الوكيل 3 / node 3 -->
+    <circle cx="320.558" cy="219.722" r="12.25" fill="#00B4D8" opacity="0.16"/><circle cx="320.558" cy="219.722" r="7.75" fill="#48CAE4"/>
+    <!-- الوكيل 4 / node 4 -->
+    <circle cx="258.303" cy="271.96" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="258.303" cy="271.96" r="6.2" fill="#48CAE4"/>
+    <!-- الوكيل 5 / node 5 -->
+    <circle cx="191.96" cy="221.967" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="191.96" cy="221.967" r="6.2" fill="#48CAE4"/>
+    <path d="M 301.847 158.524 L 286.197 155.197 L 297.976 142.999 Z" fill="#00B4D8" fill-opacity="0.9"/>
+  </g>
+  <!-- رأس أندرويد مجرّد: التطبيق المستهدف للتحليل -->
+  <g id="lg-android">
+    <circle cx="256.0" cy="197.4" r="83.6" fill="url(#lg-glow)"/>
+    <path d="M 212.0 204.0 A 44.0 44.0 0 0 1 300.0 204.0 Z" fill="#132C42" stroke="#48CAE4" stroke-width="2.42" stroke-linejoin="round"/>
+    <g stroke="#00B4D8" stroke-width="4.4" stroke-linecap="round" fill="none">
+      <path d="M 230.137 168.403 L 216.374 153.425"/>
+      <path d="M 281.863 168.403 L 295.626 153.425"/>
+    </g>
+    <circle cx="216.374" cy="153.425" r="3.74" fill="#00B4D8"/>
+    <circle cx="295.626" cy="153.425" r="3.74" fill="#00B4D8"/>
+    <!-- العينان: عينان تحليل تفحصان الكود -->
+    <circle cx="237.52" cy="192.56" r="5.0600000000000005" fill="#FFFFFF"/>
+    <circle cx="274.48" cy="192.56" r="5.0600000000000005" fill="#FFFFFF"/>
+  </g>
+  <!-- أعمدة الخطورة: Low → Medium → High → Critical -->
+  <g id="lg-bars">
+    <!-- العمود 1: Low -->
+    <rect x="172.00" y="346.00" width="30.00" height="46.00" rx="15.00" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 2: Medium -->
+    <rect x="218.00" y="318.00" width="30.00" height="74.00" rx="15.00" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 3: High -->
+    <rect x="264.00" y="286.00" width="30.00" height="106.00" rx="15.00" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 4: Critical -->
+    <rect x="310.00" y="246.00" width="30.00" height="146.00" rx="15.00" fill="url(#lg-sev-high)"/>
+    <path d="M 158.00 406.00 H 354.00" stroke="#00B4D8" stroke-opacity="0.55" stroke-width="2.40" stroke-linecap="round"/>
+  </g>
+      </g></g>
+    
+    <circle cx="232" cy="30" r="14" fill="#00FF88"/>
+    <text x="232" y="35" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#0A1929">✓</text>
+    <text x="16" y="240" font-family="sans-serif" font-size="14.5" fill="#E0E0E0">Primary mark · logo-dark.svg</text>
+  </g>
+  <g transform="translate(298 96)">
+    <rect width="258" height="258" rx="18" fill="#F4F7FA" stroke="#1E3A54"/>
+    <g transform="translate(24 16) scale(0.41)"><g transform="">
+  <!-- الدرع: الأمن والحماية — العنصر الحاوي للهوية -->
+  <g id="lg-shield">
+    <path d="M 138.0 70.0 H 374.0 Q 408.0 70.0 408.0 104.0 V 260.0 C 408.0 356.0 342.0 422.0 256.0 468.0 C 170.0 422.0 104.0 356.0 104.0 260.0 V 104.0 Q 104.0 70.0 138.0 70.0 Z" fill="url(#lg-shield-fill)" stroke="url(#lg-shield-stroke)" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M 164.0 96.0 H 348.0 Q 382.0 96.0 382.0 130.0 V 286.0 C 382.0 382.0 342.0 390.0 256.0 436.0 C 170.0 390.0 130.0 382.0 130.0 286.0 V 130.0 Q 130.0 96.0 164.0 96.0 Z" fill="none" stroke="url(#lg-shield-stroke)" stroke-width="2.4" stroke-opacity="0.28"/>
+  </g>
+  <!-- الحلقة المدارية: تعاون الوكلاء الخمسة + اتجاه الدورة -->
+  <g id="lg-orbit">
+    <path d="M 321.96 203.697 A 66.0 66.0 0 1 1 301.847 158.524" fill="none" stroke="#00B4D8" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.55"/>
+    <!-- الوكيل 1 / node 1 -->
+    <circle cx="195.706" cy="179.155" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="195.706" cy="179.155" r="6.2" fill="#48CAE4"/>
+    <!-- الوكيل 2 / node 2 -->
+    <circle cx="262.899" cy="140.362" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="262.899" cy="140.362" r="6.2" fill="#48CAE4"/>
+    <!-- الوكيل 3 / node 3 -->
+    <circle cx="320.558" cy="219.722" r="12.25" fill="#00B4D8" opacity="0.16"/><circle cx="320.558" cy="219.722" r="7.75" fill="#48CAE4"/>
+    <!-- الوكيل 4 / node 4 -->
+    <circle cx="258.303" cy="271.96" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="258.303" cy="271.96" r="6.2" fill="#48CAE4"/>
+    <!-- الوكيل 5 / node 5 -->
+    <circle cx="191.96" cy="221.967" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="191.96" cy="221.967" r="6.2" fill="#48CAE4"/>
+    <path d="M 301.847 158.524 L 286.197 155.197 L 297.976 142.999 Z" fill="#00B4D8" fill-opacity="0.9"/>
+  </g>
+  <!-- رأس أندرويد مجرّد: التطبيق المستهدف للتحليل -->
+  <g id="lg-android">
+    <circle cx="256.0" cy="197.4" r="83.6" fill="url(#lg-glow)"/>
+    <path d="M 212.0 204.0 A 44.0 44.0 0 0 1 300.0 204.0 Z" fill="#132C42" stroke="#48CAE4" stroke-width="2.42" stroke-linejoin="round"/>
+    <g stroke="#00B4D8" stroke-width="4.4" stroke-linecap="round" fill="none">
+      <path d="M 230.137 168.403 L 216.374 153.425"/>
+      <path d="M 281.863 168.403 L 295.626 153.425"/>
+    </g>
+    <circle cx="216.374" cy="153.425" r="3.74" fill="#00B4D8"/>
+    <circle cx="295.626" cy="153.425" r="3.74" fill="#00B4D8"/>
+    <!-- العينان: عينان تحليل تفحصان الكود -->
+    <circle cx="237.52" cy="192.56" r="5.0600000000000005" fill="#FFFFFF"/>
+    <circle cx="274.48" cy="192.56" r="5.0600000000000005" fill="#FFFFFF"/>
+  </g>
+  <!-- أعمدة الخطورة: Low → Medium → High → Critical -->
+  <g id="lg-bars">
+    <!-- العمود 1: Low -->
+    <rect x="172.00" y="346.00" width="30.00" height="46.00" rx="15.00" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 2: Medium -->
+    <rect x="218.00" y="318.00" width="30.00" height="74.00" rx="15.00" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 3: High -->
+    <rect x="264.00" y="286.00" width="30.00" height="106.00" rx="15.00" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 4: Critical -->
+    <rect x="310.00" y="246.00" width="30.00" height="146.00" rx="15.00" fill="url(#lg-sev-high)"/>
+    <path d="M 158.00 406.00 H 354.00" stroke="#00B4D8" stroke-opacity="0.55" stroke-width="2.40" stroke-linecap="round"/>
+  </g>
+      </g></g>
+    
+    <circle cx="232" cy="30" r="14" fill="#00FF88"/>
+    <text x="232" y="35" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#0A1929">✓</text>
+    <text x="16" y="240" font-family="sans-serif" font-size="14.5" fill="#0F172A">Light surfaces · logo-light.svg</text>
+  </g>
+  <g transform="translate(576 96)">
+    <rect width="258" height="258" rx="18" fill="#0E2233" stroke="#1E3A54"/>
+    <g transform="translate(24 16) scale(0.41)"><g transform="">
+  <!-- الدرع: الأمن والحماية — العنصر الحاوي للهوية -->
+  <g id="lg-shield">
+    <path d="M 138.0 70.0 H 374.0 Q 408.0 70.0 408.0 104.0 V 260.0 C 408.0 356.0 342.0 422.0 256.0 468.0 C 170.0 422.0 104.0 356.0 104.0 260.0 V 104.0 Q 104.0 70.0 138.0 70.0 Z" fill="url(#lg-shield-fill)" stroke="url(#lg-shield-stroke)" stroke-width="11" stroke-linejoin="round"/>
+    <path d="M 164.0 96.0 H 348.0 Q 382.0 96.0 382.0 130.0 V 286.0 C 382.0 382.0 342.0 390.0 256.0 436.0 C 170.0 390.0 130.0 382.0 130.0 286.0 V 130.0 Q 130.0 96.0 164.0 96.0 Z" fill="none" stroke="url(#lg-shield-stroke)" stroke-width="2.4" stroke-opacity="0.28"/>
+  </g>
+  <!-- رأس أندرويد مجرّد: التطبيق المستهدف للتحليل -->
+  <g id="lg-android">
+    <circle cx="256.0" cy="223.8" r="129.2" fill="url(#lg-glow)"/>
+    <path d="M 188.0 234.0 A 68.0 68.0 0 0 1 324.0 234.0 Z" fill="#132C42" stroke="#48CAE4" stroke-width="3.74" stroke-linejoin="round"/>
+    <g stroke="#00B4D8" stroke-width="6.800000000000001" stroke-linecap="round" fill="none">
+      <path d="M 216.031 178.987 L 194.761 155.84"/>
+      <path d="M 295.969 178.987 L 317.239 155.84"/>
+    </g>
+    <circle cx="194.761" cy="155.84" r="5.78" fill="#00B4D8"/>
+    <circle cx="317.239" cy="155.84" r="5.78" fill="#00B4D8"/>
+    <!-- العينان: عينان تحليل تفحصان الكود -->
+    <circle cx="227.44" cy="216.32" r="7.82" fill="#FFFFFF"/>
+    <circle cx="284.56" cy="216.32" r="7.82" fill="#FFFFFF"/>
+  </g>
+  <!-- أعمدة الخطورة: Low → Medium → High → Critical -->
+  <g id="lg-bars">
+    <!-- العمود 1: Low -->
+    <rect x="184.60" y="384.90" width="25.50" height="39.10" rx="12.75" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 2: Medium -->
+    <rect x="223.70" y="361.10" width="25.50" height="62.90" rx="12.75" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 3: High -->
+    <rect x="262.80" y="333.90" width="25.50" height="90.10" rx="12.75" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 4: Critical -->
+    <rect x="301.90" y="299.90" width="25.50" height="124.10" rx="12.75" fill="url(#lg-sev-high)"/>
+  </g>
+      </g></g>
+    
+    <circle cx="232" cy="30" r="14" fill="#00FF88"/>
+    <text x="232" y="35" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#0A1929">✓</text>
+    <text x="16" y="240" font-family="sans-serif" font-size="14.5" fill="#E0E0E0">Below 48px · logo-icon.svg</text>
+  </g>
+  <g transform="translate(854 96)">
+    <rect width="258" height="258" rx="18" fill="#FFFFFF" stroke="#1E3A54"/>
+    <g transform="translate(24 16) scale(0.41)"><g transform="">
+  <!-- الدرع: الأمن والحماية — العنصر الحاوي للهوية -->
+  <g id="lg-shield">
+    <path d="M 138.0 70.0 H 374.0 Q 408.0 70.0 408.0 104.0 V 260.0 C 408.0 356.0 342.0 422.0 256.0 468.0 C 170.0 422.0 104.0 356.0 104.0 260.0 V 104.0 Q 104.0 70.0 138.0 70.0 Z" fill="none" stroke="#111111" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M 164.0 96.0 H 348.0 Q 382.0 96.0 382.0 130.0 V 286.0 C 382.0 382.0 342.0 390.0 256.0 436.0 C 170.0 390.0 130.0 382.0 130.0 286.0 V 130.0 Q 130.0 96.0 164.0 96.0 Z" fill="none" stroke="#111111" stroke-width="2.4" stroke-opacity="0.28"/>
+  </g>
+  <!-- الحلقة المدارية: تعاون الوكلاء الخمسة + اتجاه الدورة -->
+  <g id="lg-orbit">
+    <path d="M 321.96 203.697 A 66.0 66.0 0 1 1 301.847 158.524" fill="none" stroke="#111111" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.55"/>
+    <!-- الوكيل 1 / node 1 -->
+    <circle cx="195.706" cy="179.155" r="10.70" fill="#111111" opacity="0.16"/><circle cx="195.706" cy="179.155" r="6.2" fill="#111111"/>
+    <!-- الوكيل 2 / node 2 -->
+    <circle cx="262.899" cy="140.362" r="10.70" fill="#111111" opacity="0.16"/><circle cx="262.899" cy="140.362" r="6.2" fill="#111111"/>
+    <!-- الوكيل 3 / node 3 -->
+    <circle cx="320.558" cy="219.722" r="12.25" fill="#111111" opacity="0.16"/><circle cx="320.558" cy="219.722" r="7.75" fill="#111111"/>
+    <!-- الوكيل 4 / node 4 -->
+    <circle cx="258.303" cy="271.96" r="10.70" fill="#111111" opacity="0.16"/><circle cx="258.303" cy="271.96" r="6.2" fill="#111111"/>
+    <!-- الوكيل 5 / node 5 -->
+    <circle cx="191.96" cy="221.967" r="10.70" fill="#111111" opacity="0.16"/><circle cx="191.96" cy="221.967" r="6.2" fill="#111111"/>
+    <path d="M 301.847 158.524 L 286.197 155.197 L 297.976 142.999 Z" fill="#111111" fill-opacity="0.9"/>
+  </g>
+  <!-- رأس أندرويد مجرّد: التطبيق المستهدف للتحليل -->
+  <g id="lg-android">
+    <circle cx="256.0" cy="197.4" r="83.6" fill="none"/>
+    <path d="M 212.0 204.0 A 44.0 44.0 0 0 1 300.0 204.0 Z" fill="none" stroke="#111111" stroke-width="2.42" stroke-linejoin="round"/>
+    <g stroke="#111111" stroke-width="4.4" stroke-linecap="round" fill="none">
+      <path d="M 230.137 168.403 L 216.374 153.425"/>
+      <path d="M 281.863 168.403 L 295.626 153.425"/>
+    </g>
+    <circle cx="216.374" cy="153.425" r="3.74" fill="#111111"/>
+    <circle cx="295.626" cy="153.425" r="3.74" fill="#111111"/>
+    <!-- العينان: عينان تحليل تفحصان الكود -->
+    <circle cx="237.52" cy="192.56" r="5.0600000000000005" fill="#111111"/>
+    <circle cx="274.48" cy="192.56" r="5.0600000000000005" fill="#111111"/>
+  </g>
+  <!-- أعمدة الخطورة: Low → Medium → High → Critical -->
+  <g id="lg-bars">
+    <!-- العمود 1: Low -->
+    <rect x="172.00" y="346.00" width="30.00" height="46.00" rx="15.00" fill="#111111" fill-opacity="0.40"/>
+    <!-- العمود 2: Medium -->
+    <rect x="218.00" y="318.00" width="30.00" height="74.00" rx="15.00" fill="#111111" fill-opacity="0.55"/>
+    <!-- العمود 3: High -->
+    <rect x="264.00" y="286.00" width="30.00" height="106.00" rx="15.00" fill="#111111" fill-opacity="0.70"/>
+    <!-- العمود 4: Critical -->
+    <rect x="310.00" y="246.00" width="30.00" height="146.00" rx="15.00" fill="#111111" fill-opacity="1"/>
+    <path d="M 158.00 406.00 H 354.00" stroke="#111111" stroke-opacity="0.55" stroke-width="2.40" stroke-linecap="round"/>
+  </g>
+      </g></g>
+    
+    <circle cx="232" cy="30" r="14" fill="#00FF88"/>
+    <text x="232" y="35" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#0A1929">✓</text>
+    <text x="16" y="240" font-family="sans-serif" font-size="14.5" fill="#0F172A">Print / 1-color · logo-mono.svg</text>
+  </g>
+  <g transform="translate(20 396)">
+    <rect width="258" height="258" rx="18" fill="#0E2233" stroke="#1E3A54"/>
+    <g transform="translate(24 16) scale(0.41)"><g transform="scale(1.16 0.84)">
+  <!-- الدرع: الأمن والحماية — العنصر الحاوي للهوية -->
+  <g id="lg-shield">
+    <path d="M 138.0 70.0 H 374.0 Q 408.0 70.0 408.0 104.0 V 260.0 C 408.0 356.0 342.0 422.0 256.0 468.0 C 170.0 422.0 104.0 356.0 104.0 260.0 V 104.0 Q 104.0 70.0 138.0 70.0 Z" fill="url(#lg-shield-fill)" stroke="url(#lg-shield-stroke)" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M 164.0 96.0 H 348.0 Q 382.0 96.0 382.0 130.0 V 286.0 C 382.0 382.0 342.0 390.0 256.0 436.0 C 170.0 390.0 130.0 382.0 130.0 286.0 V 130.0 Q 130.0 96.0 164.0 96.0 Z" fill="none" stroke="url(#lg-shield-stroke)" stroke-width="2.4" stroke-opacity="0.28"/>
+  </g>
+  <!-- الحلقة المدارية: تعاون الوكلاء الخمسة + اتجاه الدورة -->
+  <g id="lg-orbit">
+    <path d="M 321.96 203.697 A 66.0 66.0 0 1 1 301.847 158.524" fill="none" stroke="#00B4D8" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.55"/>
+    <!-- الوكيل 1 / node 1 -->
+    <circle cx="195.706" cy="179.155" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="195.706" cy="179.155" r="6.2" fill="#48CAE4"/>
+    <!-- الوكيل 2 / node 2 -->
+    <circle cx="262.899" cy="140.362" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="262.899" cy="140.362" r="6.2" fill="#48CAE4"/>
+    <!-- الوكيل 3 / node 3 -->
+    <circle cx="320.558" cy="219.722" r="12.25" fill="#00B4D8" opacity="0.16"/><circle cx="320.558" cy="219.722" r="7.75" fill="#48CAE4"/>
+    <!-- الوكيل 4 / node 4 -->
+    <circle cx="258.303" cy="271.96" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="258.303" cy="271.96" r="6.2" fill="#48CAE4"/>
+    <!-- الوكيل 5 / node 5 -->
+    <circle cx="191.96" cy="221.967" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="191.96" cy="221.967" r="6.2" fill="#48CAE4"/>
+    <path d="M 301.847 158.524 L 286.197 155.197 L 297.976 142.999 Z" fill="#00B4D8" fill-opacity="0.9"/>
+  </g>
+  <!-- رأس أندرويد مجرّد: التطبيق المستهدف للتحليل -->
+  <g id="lg-android">
+    <circle cx="256.0" cy="197.4" r="83.6" fill="url(#lg-glow)"/>
+    <path d="M 212.0 204.0 A 44.0 44.0 0 0 1 300.0 204.0 Z" fill="#132C42" stroke="#48CAE4" stroke-width="2.42" stroke-linejoin="round"/>
+    <g stroke="#00B4D8" stroke-width="4.4" stroke-linecap="round" fill="none">
+      <path d="M 230.137 168.403 L 216.374 153.425"/>
+      <path d="M 281.863 168.403 L 295.626 153.425"/>
+    </g>
+    <circle cx="216.374" cy="153.425" r="3.74" fill="#00B4D8"/>
+    <circle cx="295.626" cy="153.425" r="3.74" fill="#00B4D8"/>
+    <!-- العينان: عينان تحليل تفحصان الكود -->
+    <circle cx="237.52" cy="192.56" r="5.0600000000000005" fill="#FFFFFF"/>
+    <circle cx="274.48" cy="192.56" r="5.0600000000000005" fill="#FFFFFF"/>
+  </g>
+  <!-- أعمدة الخطورة: Low → Medium → High → Critical -->
+  <g id="lg-bars">
+    <!-- العمود 1: Low -->
+    <rect x="172.00" y="346.00" width="30.00" height="46.00" rx="15.00" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 2: Medium -->
+    <rect x="218.00" y="318.00" width="30.00" height="74.00" rx="15.00" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 3: High -->
+    <rect x="264.00" y="286.00" width="30.00" height="106.00" rx="15.00" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 4: Critical -->
+    <rect x="310.00" y="246.00" width="30.00" height="146.00" rx="15.00" fill="url(#lg-sev-high)"/>
+    <path d="M 158.00 406.00 H 354.00" stroke="#00B4D8" stroke-opacity="0.55" stroke-width="2.40" stroke-linecap="round"/>
+  </g>
+      </g></g>
+    
+    <circle cx="232" cy="30" r="14" fill="#D62828"/>
+    <text x="232" y="35" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#0A1929">✕</text>
+    <text x="16" y="240" font-family="sans-serif" font-size="14.5" fill="#E0E0E0">Don&#39;t stretch or squash</text>
+  </g>
+  <g transform="translate(298 396)">
+    <rect width="258" height="258" rx="18" fill="#0E2233" stroke="#1E3A54"/>
+    <g transform="translate(24 16) scale(0.41)"><g transform="rotate(16 256 256)">
+  <!-- الدرع: الأمن والحماية — العنصر الحاوي للهوية -->
+  <g id="lg-shield">
+    <path d="M 138.0 70.0 H 374.0 Q 408.0 70.0 408.0 104.0 V 260.0 C 408.0 356.0 342.0 422.0 256.0 468.0 C 170.0 422.0 104.0 356.0 104.0 260.0 V 104.0 Q 104.0 70.0 138.0 70.0 Z" fill="url(#lg-shield-fill)" stroke="url(#lg-shield-stroke)" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M 164.0 96.0 H 348.0 Q 382.0 96.0 382.0 130.0 V 286.0 C 382.0 382.0 342.0 390.0 256.0 436.0 C 170.0 390.0 130.0 382.0 130.0 286.0 V 130.0 Q 130.0 96.0 164.0 96.0 Z" fill="none" stroke="url(#lg-shield-stroke)" stroke-width="2.4" stroke-opacity="0.28"/>
+  </g>
+  <!-- الحلقة المدارية: تعاون الوكلاء الخمسة + اتجاه الدورة -->
+  <g id="lg-orbit">
+    <path d="M 321.96 203.697 A 66.0 66.0 0 1 1 301.847 158.524" fill="none" stroke="#00B4D8" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.55"/>
+    <!-- الوكيل 1 / node 1 -->
+    <circle cx="195.706" cy="179.155" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="195.706" cy="179.155" r="6.2" fill="#48CAE4"/>
+    <!-- الوكيل 2 / node 2 -->
+    <circle cx="262.899" cy="140.362" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="262.899" cy="140.362" r="6.2" fill="#48CAE4"/>
+    <!-- الوكيل 3 / node 3 -->
+    <circle cx="320.558" cy="219.722" r="12.25" fill="#00B4D8" opacity="0.16"/><circle cx="320.558" cy="219.722" r="7.75" fill="#48CAE4"/>
+    <!-- الوكيل 4 / node 4 -->
+    <circle cx="258.303" cy="271.96" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="258.303" cy="271.96" r="6.2" fill="#48CAE4"/>
+    <!-- الوكيل 5 / node 5 -->
+    <circle cx="191.96" cy="221.967" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="191.96" cy="221.967" r="6.2" fill="#48CAE4"/>
+    <path d="M 301.847 158.524 L 286.197 155.197 L 297.976 142.999 Z" fill="#00B4D8" fill-opacity="0.9"/>
+  </g>
+  <!-- رأس أندرويد مجرّد: التطبيق المستهدف للتحليل -->
+  <g id="lg-android">
+    <circle cx="256.0" cy="197.4" r="83.6" fill="url(#lg-glow)"/>
+    <path d="M 212.0 204.0 A 44.0 44.0 0 0 1 300.0 204.0 Z" fill="#132C42" stroke="#48CAE4" stroke-width="2.42" stroke-linejoin="round"/>
+    <g stroke="#00B4D8" stroke-width="4.4" stroke-linecap="round" fill="none">
+      <path d="M 230.137 168.403 L 216.374 153.425"/>
+      <path d="M 281.863 168.403 L 295.626 153.425"/>
+    </g>
+    <circle cx="216.374" cy="153.425" r="3.74" fill="#00B4D8"/>
+    <circle cx="295.626" cy="153.425" r="3.74" fill="#00B4D8"/>
+    <!-- العينان: عينان تحليل تفحصان الكود -->
+    <circle cx="237.52" cy="192.56" r="5.0600000000000005" fill="#FFFFFF"/>
+    <circle cx="274.48" cy="192.56" r="5.0600000000000005" fill="#FFFFFF"/>
+  </g>
+  <!-- أعمدة الخطورة: Low → Medium → High → Critical -->
+  <g id="lg-bars">
+    <!-- العمود 1: Low -->
+    <rect x="172.00" y="346.00" width="30.00" height="46.00" rx="15.00" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 2: Medium -->
+    <rect x="218.00" y="318.00" width="30.00" height="74.00" rx="15.00" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 3: High -->
+    <rect x="264.00" y="286.00" width="30.00" height="106.00" rx="15.00" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 4: Critical -->
+    <rect x="310.00" y="246.00" width="30.00" height="146.00" rx="15.00" fill="url(#lg-sev-high)"/>
+    <path d="M 158.00 406.00 H 354.00" stroke="#00B4D8" stroke-opacity="0.55" stroke-width="2.40" stroke-linecap="round"/>
+  </g>
+      </g></g>
+    
+    <circle cx="232" cy="30" r="14" fill="#D62828"/>
+    <text x="232" y="35" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#0A1929">✕</text>
+    <text x="16" y="240" font-family="sans-serif" font-size="14.5" fill="#E0E0E0">Don&#39;t rotate or skew</text>
+  </g>
+  <g transform="translate(576 396)">
+    <rect width="258" height="258" rx="18" fill="#6D28D9" stroke="#1E3A54"/>
+    <g transform="translate(24 16) scale(0.41)"><g transform="">
+  <!-- الدرع: الأمن والحماية — العنصر الحاوي للهوية -->
+  <g id="lg-shield">
+    <path d="M 138.0 70.0 H 374.0 Q 408.0 70.0 408.0 104.0 V 260.0 C 408.0 356.0 342.0 422.0 256.0 468.0 C 170.0 422.0 104.0 356.0 104.0 260.0 V 104.0 Q 104.0 70.0 138.0 70.0 Z" fill="url(#lg-shield-fill)" stroke="url(#lg-shield-stroke)" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M 164.0 96.0 H 348.0 Q 382.0 96.0 382.0 130.0 V 286.0 C 382.0 382.0 342.0 390.0 256.0 436.0 C 170.0 390.0 130.0 382.0 130.0 286.0 V 130.0 Q 130.0 96.0 164.0 96.0 Z" fill="none" stroke="url(#lg-shield-stroke)" stroke-width="2.4" stroke-opacity="0.28"/>
+  </g>
+  <!-- الحلقة المدارية: تعاون الوكلاء الخمسة + اتجاه الدورة -->
+  <g id="lg-orbit">
+    <path d="M 321.96 203.697 A 66.0 66.0 0 1 1 301.847 158.524" fill="none" stroke="#00B4D8" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.55"/>
+    <!-- الوكيل 1 / node 1 -->
+    <circle cx="195.706" cy="179.155" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="195.706" cy="179.155" r="6.2" fill="#48CAE4"/>
+    <!-- الوكيل 2 / node 2 -->
+    <circle cx="262.899" cy="140.362" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="262.899" cy="140.362" r="6.2" fill="#48CAE4"/>
+    <!-- الوكيل 3 / node 3 -->
+    <circle cx="320.558" cy="219.722" r="12.25" fill="#00B4D8" opacity="0.16"/><circle cx="320.558" cy="219.722" r="7.75" fill="#48CAE4"/>
+    <!-- الوكيل 4 / node 4 -->
+    <circle cx="258.303" cy="271.96" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="258.303" cy="271.96" r="6.2" fill="#48CAE4"/>
+    <!-- الوكيل 5 / node 5 -->
+    <circle cx="191.96" cy="221.967" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="191.96" cy="221.967" r="6.2" fill="#48CAE4"/>
+    <path d="M 301.847 158.524 L 286.197 155.197 L 297.976 142.999 Z" fill="#00B4D8" fill-opacity="0.9"/>
+  </g>
+  <!-- رأس أندرويد مجرّد: التطبيق المستهدف للتحليل -->
+  <g id="lg-android">
+    <circle cx="256.0" cy="197.4" r="83.6" fill="url(#lg-glow)"/>
+    <path d="M 212.0 204.0 A 44.0 44.0 0 0 1 300.0 204.0 Z" fill="#132C42" stroke="#48CAE4" stroke-width="2.42" stroke-linejoin="round"/>
+    <g stroke="#00B4D8" stroke-width="4.4" stroke-linecap="round" fill="none">
+      <path d="M 230.137 168.403 L 216.374 153.425"/>
+      <path d="M 281.863 168.403 L 295.626 153.425"/>
+    </g>
+    <circle cx="216.374" cy="153.425" r="3.74" fill="#00B4D8"/>
+    <circle cx="295.626" cy="153.425" r="3.74" fill="#00B4D8"/>
+    <!-- العينان: عينان تحليل تفحصان الكود -->
+    <circle cx="237.52" cy="192.56" r="5.0600000000000005" fill="#FFFFFF"/>
+    <circle cx="274.48" cy="192.56" r="5.0600000000000005" fill="#FFFFFF"/>
+  </g>
+  <!-- أعمدة الخطورة: Low → Medium → High → Critical -->
+  <g id="lg-bars">
+    <!-- العمود 1: Low -->
+    <rect x="172.00" y="346.00" width="30.00" height="46.00" rx="15.00" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 2: Medium -->
+    <rect x="218.00" y="318.00" width="30.00" height="74.00" rx="15.00" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 3: High -->
+    <rect x="264.00" y="286.00" width="30.00" height="106.00" rx="15.00" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 4: Critical -->
+    <rect x="310.00" y="246.00" width="30.00" height="146.00" rx="15.00" fill="url(#lg-sev-high)"/>
+    <path d="M 158.00 406.00 H 354.00" stroke="#00B4D8" stroke-opacity="0.55" stroke-width="2.40" stroke-linecap="round"/>
+  </g>
+      </g></g>
+    <rect x="0" y="0" width="258" height="258" rx="18" fill="#F472B6" opacity="0.38"/>
+    <circle cx="232" cy="30" r="14" fill="#D62828"/>
+    <text x="232" y="35" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#0A1929">✕</text>
+    <text x="16" y="240" font-family="sans-serif" font-size="14.5" fill="#E0E0E0">Don&#39;t tint outside palette</text>
+  </g>
+  <g transform="translate(854 396)">
+    <rect width="258" height="258" rx="18" fill="#00B4D8" stroke="#1E3A54"/>
+    <g transform="translate(24 16) scale(0.41)"><g transform="">
+  <!-- الدرع: الأمن والحماية — العنصر الحاوي للهوية -->
+  <g id="lg-shield">
+    <path d="M 138.0 70.0 H 374.0 Q 408.0 70.0 408.0 104.0 V 260.0 C 408.0 356.0 342.0 422.0 256.0 468.0 C 170.0 422.0 104.0 356.0 104.0 260.0 V 104.0 Q 104.0 70.0 138.0 70.0 Z" fill="url(#lg-shield-fill)" stroke="url(#lg-shield-stroke)" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M 164.0 96.0 H 348.0 Q 382.0 96.0 382.0 130.0 V 286.0 C 382.0 382.0 342.0 390.0 256.0 436.0 C 170.0 390.0 130.0 382.0 130.0 286.0 V 130.0 Q 130.0 96.0 164.0 96.0 Z" fill="none" stroke="url(#lg-shield-stroke)" stroke-width="2.4" stroke-opacity="0.28"/>
+  </g>
+  <!-- الحلقة المدارية: تعاون الوكلاء الخمسة + اتجاه الدورة -->
+  <g id="lg-orbit">
+    <path d="M 321.96 203.697 A 66.0 66.0 0 1 1 301.847 158.524" fill="none" stroke="#00B4D8" stroke-width="4.2" stroke-linecap="round" stroke-opacity="0.55"/>
+    <!-- الوكيل 1 / node 1 -->
+    <circle cx="195.706" cy="179.155" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="195.706" cy="179.155" r="6.2" fill="#48CAE4"/>
+    <!-- الوكيل 2 / node 2 -->
+    <circle cx="262.899" cy="140.362" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="262.899" cy="140.362" r="6.2" fill="#48CAE4"/>
+    <!-- الوكيل 3 / node 3 -->
+    <circle cx="320.558" cy="219.722" r="12.25" fill="#00B4D8" opacity="0.16"/><circle cx="320.558" cy="219.722" r="7.75" fill="#48CAE4"/>
+    <!-- الوكيل 4 / node 4 -->
+    <circle cx="258.303" cy="271.96" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="258.303" cy="271.96" r="6.2" fill="#48CAE4"/>
+    <!-- الوكيل 5 / node 5 -->
+    <circle cx="191.96" cy="221.967" r="10.70" fill="#00B4D8" opacity="0.16"/><circle cx="191.96" cy="221.967" r="6.2" fill="#48CAE4"/>
+    <path d="M 301.847 158.524 L 286.197 155.197 L 297.976 142.999 Z" fill="#00B4D8" fill-opacity="0.9"/>
+  </g>
+  <!-- رأس أندرويد مجرّد: التطبيق المستهدف للتحليل -->
+  <g id="lg-android">
+    <circle cx="256.0" cy="197.4" r="83.6" fill="url(#lg-glow)"/>
+    <path d="M 212.0 204.0 A 44.0 44.0 0 0 1 300.0 204.0 Z" fill="#132C42" stroke="#48CAE4" stroke-width="2.42" stroke-linejoin="round"/>
+    <g stroke="#00B4D8" stroke-width="4.4" stroke-linecap="round" fill="none">
+      <path d="M 230.137 168.403 L 216.374 153.425"/>
+      <path d="M 281.863 168.403 L 295.626 153.425"/>
+    </g>
+    <circle cx="216.374" cy="153.425" r="3.74" fill="#00B4D8"/>
+    <circle cx="295.626" cy="153.425" r="3.74" fill="#00B4D8"/>
+    <!-- العينان: عينان تحليل تفحصان الكود -->
+    <circle cx="237.52" cy="192.56" r="5.0600000000000005" fill="#FFFFFF"/>
+    <circle cx="274.48" cy="192.56" r="5.0600000000000005" fill="#FFFFFF"/>
+  </g>
+  <!-- أعمدة الخطورة: Low → Medium → High → Critical -->
+  <g id="lg-bars">
+    <!-- العمود 1: Low -->
+    <rect x="172.00" y="346.00" width="30.00" height="46.00" rx="15.00" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 2: Medium -->
+    <rect x="218.00" y="318.00" width="30.00" height="74.00" rx="15.00" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 3: High -->
+    <rect x="264.00" y="286.00" width="30.00" height="106.00" rx="15.00" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 4: Critical -->
+    <rect x="310.00" y="246.00" width="30.00" height="146.00" rx="15.00" fill="url(#lg-sev-high)"/>
+    <path d="M 158.00 406.00 H 354.00" stroke="#00B4D8" stroke-opacity="0.55" stroke-width="2.40" stroke-linecap="round"/>
+  </g>
+      </g></g>
+    <rect x="0" y="0" width="258" height="258" rx="18" fill="#00B4D8" opacity="0.55"/>
+    <circle cx="232" cy="30" r="14" fill="#D62828"/>
+    <text x="232" y="35" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#0A1929">✕</text>
+    <text x="16" y="240" font-family="sans-serif" font-size="14.5" fill="#E0E0E0">Don&#39;t place on low contrast</text>
+  </g>
+</svg>

@@ -1,0 +1,32 @@
+# =====================================================================
+# settings.yaml — إعدادات النماذج والمسارات / LLM & paths configuration
+# (القرارات المعتمدة: Hybrid LLM حسب الوكيل + Fallback Chain)
+# =====================================================================
+
+llm:
+  orchestrator: { model: "llama3.2:3b",            provider: "ollama", temperature: 0.1 }
+  extractor:    { model: "qwen2.5:14b",            provider: "ollama", temperature: 0.1 }
+  scorer:       { model: "llama-3.3-70b-versatile", provider: "groq",   temperature: 0.0 }
+  reviewer:     { model: "llama-3.3-70b-versatile", provider: "groq",   temperature: 0.2 }
+  reporter:     { model: "qwen2.5:14b",            provider: "ollama", temperature: 0.3 }
+  report:       { model: "qwen2.5:14b",            provider: "ollama", temperature: 0.3 }
+  fallback_chain: ["groq", "gemini", "ollama"]
+
+ollama:
+  base_url: "http://localhost:11434"
+
+auth:
+  secret_key: "mas-dev-secret-key-change-in-production"
+  algorithm: "HS256"
+  access_token_expire_minutes: 60
+
+rag:
+  retrieval_top_k: 3          # عدد الأنماط المسترجعة لكل أداة/ثغرة
+  embedding_backend: "auto"   # auto|sentence-transformers|api|tfidf|mock
+
+paths:
+  data: "./data"
+  apks: "./data/apks"
+  artifacts: "./data/artifacts"
+  reports: "./data/reports"
+  db: "./data/app.db"

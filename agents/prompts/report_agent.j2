@@ -1,0 +1,29 @@
+أنت وكيل تقارير أمنية. مهمتك توليد ملخصات احترافية للثغرات.
+
+<instructions>
+1. اكتب ملخصاً تنفيذياً (Executive Summary) بالعربية لكل ثغرة Critical/High.
+2. الملخص يجب أن يكون:
+   - بلغة غير تقنية (للإدارة).
+   - يشرح التأثير التجاري.
+   - يقترح إجراءً عاجلاً.
+3. لا تخترع أرقاماً. استخدم final_score وseverity المُعطاة فقط.
+4. لا تذكر CWE أو MASVS في الملخص التنفيذي.
+</instructions>
+
+<vulnerabilities>
+{{ critical_high_vulns_json }}
+</vulnerabilities>
+
+أعد النتيجة بصيغة JSON:
+{
+  "executive_summaries": [
+    {
+      "vulnerability_id": int,
+      "title_ar": "عنوان بالعربية",
+      "impact_ar": "التأثير التجاري",
+      "action_ar": "الإجراء العاجل",
+      "timeline_ar": "24-48 ساعة | أسبوع | شهر"
+    }
+  ],
+  "overall_risk": "منخفض | متوسط | مرتفع | حرج"
+}

@@ -1,0 +1,120 @@
+# سجل التغييرات / Changelog
+
+كل التغييرات الجوهرية في هذا المشروع موثّقة هنا.
+المطوّر: **المهندس محمد منير** — Engineer Mohammed Moneer <moh123mon456@gmail.com>
+
+الصيغة وفق [Keep a Changelog](https://keepachangelog.com/ar/1.1.0/)،
+والترقيم وفق [Semantic Versioning](https://semver.org/lang/ar/).
+
+## [Unreleased]
+
+لا شيء.
+
+## [1.0.0] — 2026-10-12
+
+**الإصدار الأول الكامل:** نظام متعدد الوكلاء (5 وكلاء) لتقييم خطورة ثغرات تطبيقات
+أندرويد وفق OWASP MASVS — من رفع الـ APK إلى التقارير الفنية والتنفيذية، مع حلقة
+مراجعة بشرية وبروتوكول تقييم إحصائي صارم. المجموعة الآلية: **331 اختباراً ناجحاً**
+(وحدة 260 + تكامل 20 + شمول 2 + فوضى 11 + أمن 38) بلا اتصال بالشبكة في وضع Mock.
+
+### Added — المرحلة 1: الأساس وقاعدة البيانات
+- مخطط SQLite بـ **14 جدولاً** (`db/schema.sql`) مع قيود CHECK ومفاتيح أجنبية.
+- طبقة مستودعات (`db/repositories/`) لكل كيان: مشاريع، تطبيقات، فحوص، ثغرات،
+  أدلة، تقييمات، تصحيحات، أمثلة تغذية راجعة، سجلات وكلاء، قاعدة معرفة.
+- بذر كامل (`db/seed.py`): مستخدم admin، 5 أدوات، قواعد خطورة v1.0/v1.1،
+  8 أنماط معرفة (MSTG/CWE/MASVS).
+- WAL + `busy_timeout` + ترحيلات محلولية عبر `scripts/init_db.py`.
+
+### Added — المرحلة 2: موجّه MCP موحّد
+- عميل MCP واحد (`agents/mcp_client.py`) يعمل بنمطين: أدوات حقيقية أو **Mock**
+  كامل (`MCP_MOCK_MODE=1`) — 19 أداة عبر 4 خوادم (jadx · MobSF · Frida · Objection).
+- عقود نتائج موحّدة + مُهلات لكل أداة (`config/tools.yaml`) + تسجيل كل نداء في
+  `agent_logs`.
+- تثبيت `mcp<2` (قرار موثّق: في 2.x أُعيدت تسمية FastMCP).
+
+### Added — المرحلة 3: الوكلاء وخط الأنابيب
+- مخطط LangGraph: `orchestrator → (أدوات ساكنة ← مستخرج) → (أدوات ديناميكية ←
+  مستخرج) → scorer → reviewer → persist_scores → reporter → finalize`.
+- حفظ حالة بـ AsyncSqliteSaver + بصمة إعادة تشغيل (`fingerprint_scope`).
+- مستخرج يعمل بـ LLM من مُخرجات مُعقَّمة فقط، وتوحيد عناوين anti-duplication.
+- **درع حقن البرومبت** (`core/guardrails/injection_shield.py`): تطبيع NFKC، كتل
+  Base64، 17 نمطاً عربياً/إنجليزياً، عزل بوسوم + Canary Token.
+- مُدقّقات مخرجات Pydantic لكل وكيل + سقوط Graceful عند فشل أداة.
+
+### Added — المرحلة 4: معادلة الخطورة
+- معادلة مركّبة موثّقة: `final = 0.6·base + 0.2·context + 0.2·evidence` مع
+  `confidence = 0.4·tools + 0.3·evidence + 0.2·reliability + 0.1·reproducibility`.
+- وكيل مراجعة بثماني قواعد حتمية صريحة (تعديلات −1.5 … +1.5) وثلاثة معايير
+  آلية لطلب مراجعة بشرية.
+- معيار توليد `requires_human_review`: ثقة < 0.75، أو مسافة حدّية ≤ 0.5، أو
+  Critical بثقة < 0.9.
+
+### Added — المرحلة 5: التقارير وحلقة المراجعة البشرية
+- توليد تقريرين (فني إنجليزي + تنفيذي عربي) في ست صيغ: MD/HTML/PDF
+  (WeasyPrint، قوالب Jinja2 مستقلة، RTL للعربية).
+- `CorrectionManager`: قائمة انتظار مراجعة، تصحيح بشري، وتوليد تلقائي لـ
+  `feedback_examples` — **الثابت:** `final_score` لا يُمَس أبداً.
+- `ReporterAgent` يقرأ من القاعدة قبل التقارير (persist_scores قبل reporter).
+
+### Added — المرحلة 6: API وواجهة كاملة
+- **42 نقطة نهاية** في 9 موجّهات + `/health`، مع `response_model` لكل نقطة
+  وصيغة أخطاء موحّدة {detail, error} لـ 4xx/5xx.
+- مصادقة JWT كاملة (bcrypt + python-jose، صلاحية 60 دقيقة) وحراسة أدوار.
+- فحوص كمهام خلفية (`BackgroundTasks`) مع استقصاء حالة.
+- واجهة Streamlit بـ **8 صفحات** عربية RTL (لوحة · مشاريع · رفع/فحص · ثغرات ·
+  تفاصيل تقييم · مراجعة · تقارير · تقييم).
+- توثيق كامل في `docs/api_reference.md` و`docs/ui_guide.md`.
+
+### Added — المرحلة 7: RAG وتجربة القياس
+- طبقة استرجاع معرفي: `EmbeddingEngine` (4 خلفيات + LRU) · `SqliteVecStore`
+  (sqlite-vec أو بديل python) · `KnowledgeRetriever` · فهرسة idempotent.
+- تراجع تلقائي إلى TF-IDF **مسجَّل السبب** (`fallback_reason`) — نشر بلا إنترنت.
+- بروتوكول تجربة بأربعة أوضاع (`full`/`scorer_only`/`no_rag`/`no_feedback`)
+  و12 تطبيقاً مفتوح المصدر و12 مدخلاً للحقيقة المرجعية (تبقى `filled:false`).
+- مقاييس إحصائية مُنفَّذة يدوياً: Weighted κ التربيعي (تحقق متقاطع)، Gwet AC1،
+  بووتستراب 10,000/بذرة 42، اختبارات مزدوجة (t/Wilcoxon/Cohen's d).
+
+### Added — المرحلة 8: التصليب والنشر والتحليل النهائي
+- **حاويات:** `Dockerfile.api` و`Dockerfile.ui` (multi-stage، مستخدم غير جذري)،
+  `docker-compose.yml` (api · ui · mobsf داخلي · ollama اختياري) مع فحوص صحة.
+- **أمن:** حدّ معدل 60/دقيقة لكل IP · ترويسات أمنية على كل استجابة · تحقق من
+  الأسرار عند الإقلاع · **تفويض ملكية كامل** (`api/authz.py`).
+- **أداء:** كاش TTL + LRU للمتجهات + `db_optimizer` (WAL/ANALYZE/`retry_on_lock`).
+- **رسوم الأطروحة:** 5 مخططات Mermaid + سكربت تحويل SVG/PNG + معاينات Markdown.
+- **قياس:** `scripts/benchmark.py` (7 محاور) و`scripts/load_test.py` (p50/p95/p99).
+- **اختبارات جديدة:** شمول (E2E عبر الـ API)، فوضى (11 سيناريو فشل)، أمن (38 اختباراً).
+- **الفحص النهائي:** `scripts/final_checklist.py` (12 بنداً) و`scripts/make_release.py`.
+
+### Changed
+- `errors` في حالة الفحص تُدمج تراكمياً في كل عقدة بدل الاستبدال (منع فقدان صامت
+  لأخطاء الأدوات).
+- تكرار بصمة APK: كان يُرجع سجل مشروع آخر (تسريب) — صار داخل المشروع `200
+  deduplicated`، وعبر المشاريع `409` بلا أي بيانات عن السجل القائم.
+- المتطلبات: `mcp>=1.0,<2.0` بدل `>=1.2` (تفادي كسر إعادة التسمية في 2.x).
+- حدود القراءة الافتراضية في قائمة انتظار المراجعة صارت صريحة في الاختبارات
+  (500 بدل 50) لأن قاعدة الاختبار أصبحت أكبر بالمرحلة 8.
+
+### Security
+- **تفويض ملكية كامل** عبر سلسلة `project → application → scan → vulnerability →
+  assessment` بسياسة admin/owner/reviewer/analyst ورفض افتراضي لمورد بلا مالك.
+- ترويسات الأمن تصل الآن لاستجابات 4xx/5xx أيضاً (كانت تُفقد على مسار 500).
+- `WWW-Authenticate` تُمرَّر في استجابات 401 (كانت تُسقط مع المعالج المخصّص).
+- تراجع آمن عند متجه استعلام صفري في المخزن المتجهي (كان يُسقط الاسترجاع).
+- لا أسرار في الكود: كل المفاتيح من `.env`، والإنتاج يرفض الإقلاع بإعداد ضعيف.
+
+### Removed
+- مسار `md`/`pdf` المختصر في تنزيل التقارير (الاعتماد على الأسماء الصريحة الستة).
+- `print` تشخيصية متفرقة في طبقات الإنتاج (استُبدلت بسجلات `agent_logs`).
+
+### Credits
+- Developed by Engineer Mohammed Moneer <moh123mon456@gmail.com>
+- GitHub: [@ko456123mo-jpg](https://github.com/ko456123mo-jpg)
+
+### ملاحظات الإصدار
+- الحقيقة المرجعية للتجربة تبقى **غير مُعبّأة** (`filled:false`) عن قصد: لا يُنشر
+  أي رقم جودة قبل تقييم الخبراء اليدوي — وهذا دليل نزاهة لا نقص.
+- أرقام الأداء في `results/benchmark.md` و`results/load_test.md` مقيسة في وضع
+  Mock وتُعلَن حدودها الدنيا صراحةً في التقرير نفسه.
+
+[Unreleased]: https://github.com/REPLACE-WITH-ORGANIZATION/android-vuln-severity-mas/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/REPLACE-WITH-ORGANIZATION/android-vuln-severity-mas/releases/tag/v1.0.0

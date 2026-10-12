@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Android Vulnerability Severity MAS">
+  <title>Android Vulnerability Severity MAS</title>
+  <defs>
+    <!-- تدرّج سطح الدرع: أزرق داكن سيبراني -->
+    <linearGradient id="lg-shield-fill" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0%" stop-color="#132C42"/>
+      <stop offset="55%" stop-color="#0E2233"/>
+      <stop offset="100%" stop-color="#0A1929"/>
+    </linearGradient>
+    <!-- تدرّج حدّ الدرع: سماوي كهربائي -->
+    <linearGradient id="lg-shield-stroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#48CAE4"/>
+      <stop offset="55%" stop-color="#00B4D8"/>
+      <stop offset="100%" stop-color="#0077B6"/>
+    </linearGradient>
+    <!-- تدرّج الأعمدة: سماوي → برتقالي → أحمر (شدة الخطورة) -->
+    <linearGradient id="lg-sev-high" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#FF6B35"/>
+      <stop offset="100%" stop-color="#D62828"/>
+    </linearGradient>
+    <linearGradient id="lg-bar-cool" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#0077B6"/>
+      <stop offset="100%" stop-color="#48CAE4"/>
+    </linearGradient>
+    <!-- توهّج مركزي ناعم حول رأس الأندرويد (بلا مرشّحات — توافق أوسع) -->
+    <radialGradient id="lg-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#00B4D8" stop-opacity="0.30"/>
+      <stop offset="65%" stop-color="#00B4D8" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#00B4D8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- لوحة داكنة مستديرة (Dark Mode) -->
+  <rect x="0" y="0" width="512" height="512" rx="96" fill="#0A1929"/>
+  <!-- توهّج مركزي خفيف (محصور داخل الدرع) -->
+  <circle cx="256.0" cy="250.0" r="138" fill="url(#lg-glow)"/>
+  <!-- الدرع: الأمن والحماية — العنصر الحاوي للهوية -->
+  <g id="lg-shield">
+    <path d="M 138.0 70.0 H 374.0 Q 408.0 70.0 408.0 104.0 V 260.0 C 408.0 356.0 342.0 422.0 256.0 468.0 C 170.0 422.0 104.0 356.0 104.0 260.0 V 104.0 Q 104.0 70.0 138.0 70.0 Z" fill="url(#lg-shield-fill)" stroke="url(#lg-shield-stroke)" stroke-width="11" stroke-linejoin="round"/>
+    <path d="M 164.0 96.0 H 348.0 Q 382.0 96.0 382.0 130.0 V 286.0 C 382.0 382.0 342.0 390.0 256.0 436.0 C 170.0 390.0 130.0 382.0 130.0 286.0 V 130.0 Q 130.0 96.0 164.0 96.0 Z" fill="none" stroke="url(#lg-shield-stroke)" stroke-width="2.4" stroke-opacity="0.28"/>
+  </g>
+  <!-- رأس أندرويد مجرّد: التطبيق المستهدف للتحليل -->
+  <g id="lg-android">
+    <circle cx="256.0" cy="223.8" r="129.2" fill="url(#lg-glow)"/>
+    <path d="M 188.0 234.0 A 68.0 68.0 0 0 1 324.0 234.0 Z" fill="#132C42" stroke="#48CAE4" stroke-width="3.74" stroke-linejoin="round"/>
+    <g stroke="#00B4D8" stroke-width="6.800000000000001" stroke-linecap="round" fill="none">
+      <path d="M 216.031 178.987 L 194.761 155.84"/>
+      <path d="M 295.969 178.987 L 317.239 155.84"/>
+    </g>
+    <circle cx="194.761" cy="155.84" r="5.78" fill="#00B4D8"/>
+    <circle cx="317.239" cy="155.84" r="5.78" fill="#00B4D8"/>
+    <!-- العينان: عينان تحليل تفحصان الكود -->
+    <circle cx="227.44" cy="216.32" r="7.82" fill="#FFFFFF"/>
+    <circle cx="284.56" cy="216.32" r="7.82" fill="#FFFFFF"/>
+  </g>
+  <!-- أعمدة الخطورة: Low → Medium → High → Critical -->
+  <g id="lg-bars">
+    <!-- العمود 1: Low -->
+    <rect x="184.60" y="384.90" width="25.50" height="39.10" rx="12.75" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 2: Medium -->
+    <rect x="223.70" y="361.10" width="25.50" height="62.90" rx="12.75" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 3: High -->
+    <rect x="262.80" y="333.90" width="25.50" height="90.10" rx="12.75" fill="url(#lg-bar-cool)"/>
+    <!-- العمود 4: Critical -->
+    <rect x="301.90" y="299.90" width="25.50" height="124.10" rx="12.75" fill="url(#lg-sev-high)"/>
+  </g>
+</svg>

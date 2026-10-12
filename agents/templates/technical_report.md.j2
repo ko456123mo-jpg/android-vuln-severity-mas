@@ -1,0 +1,37 @@
+# Technical Security Report — {{ application_name }}
+
+**Package**: {{ package_name }}
+**Version**: {{ version }}
+**Scan Date**: {{ scan_date }}
+**Rule Version**: {{ rule_version }}
+
+## Executive Summary
+- Total Vulnerabilities: {{ total }}
+- Critical: {{ critical_count }} | High: {{ high_count }} | Medium: {{ medium_count }} | Low: {{ low_count }}
+- Dynamically Confirmed: {{ confirmed_dynamic }} | Avg Score: {{ avg_final_score }}
+
+## Vulnerability Table
+| # | Title | MASVS | CWE | Score | Severity | Confirmed |
+|---|-------|-------|-----|-------|----------|-----------|
+{% for vuln in vulnerabilities %}
+| {{ loop.index }} | {{ vuln.title }} | {{ vuln.masvs_category }} | {{ vuln.cwe_id }} | {{ vuln.final_score }} | {{ vuln.severity }} | {{ vuln.is_confirmed }} |
+{% endfor %}
+
+## Detailed Findings
+{% for vuln in vulnerabilities %}
+### {{ loop.index }}. {{ vuln.title }}
+- **MASVS**: {{ vuln.masvs_category }}
+- **CWE**: {{ vuln.cwe_id }}
+- **Score**: {{ vuln.final_score }} ({{ vuln.severity }})
+- **Evidence**: {{ vuln.evidence }}
+- **Tools**: {{ vuln.discovered_by | join(", ") }}
+- **Reasoning**: {{ vuln.rationale }}
+
+**Recommendation**: {{ vuln.recommendation }}
+
+{% endfor %}
+
+## Tools Used
+{% for tool in tools_used %}
+- {{ tool }}
+{% endfor %}

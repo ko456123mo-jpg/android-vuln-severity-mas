@@ -1,0 +1,21 @@
+# =====================================================================
+# tools.yaml — تعريف خوادم MCP / MCP server endpoints & timeouts
+# =====================================================================
+
+tools:
+  jadx:
+    type: "stdio"
+    command: "python -m mcp_servers.jadx_server.server"
+    timeout: 300
+  mobsf:
+    type: "http"
+    url: "http://localhost:8000"
+    timeout: 600
+  frida:
+    type: "stdio"
+    command: "python -m mcp_servers.frida_server.server"
+    timeout: 180
+  objection:
+    type: "stdio"
+    command: "python -m mcp_servers.objection_server.server"
+    timeout: 180

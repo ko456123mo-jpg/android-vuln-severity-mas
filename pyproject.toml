@@ -1,0 +1,87 @@
+# =====================================================================
+# android-vuln-severity-mas — إدارة الحزم / Project metadata (PEP 621)
+# =====================================================================
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "android-vuln-severity-mas"
+version = "1.0.0"
+description = "Multi-agent system for Android vulnerability severity assessment (OWASP MASVS)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+    { name = "Engineer Mohammed Moneer", email = "moh123mon456@gmail.com" },
+]
+maintainers = [
+    { name = "Engineer Mohammed Moneer", email = "moh123mon456@gmail.com" },
+]
+dependencies = [
+    # ── Core / Backend ─────────────────────────────────────────────
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.29",
+    "sqlalchemy>=2.0",
+    "alembic>=1.13",
+    "pydantic>=2.6",
+    "pydantic-settings>=2.2",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0",
+    # ── LLM / Agents (Hybrid: Ollama + Groq + Gemini) ─────────────
+    "langgraph>=0.2",
+    "langchain>=0.3",
+    "langchain-core>=0.3",
+    "langchain-anthropic>=0.2",
+    "langchain-openai>=0.2",
+    "langchain-ollama>=0.2",
+    "langchain-groq>=0.2",
+    "langchain-google-genai>=2.0",
+    # ── MCP (مثبّتة <2: في 2.x أُعيدت تسمية FastMCP → MCPServer) ─────
+    "mcp>=1.0,<2.0",
+    "langchain-mcp-adapters>=0.0.3",
+    # ── UI ─────────────────────────────────────────────────────────
+    "streamlit>=1.35",
+    "streamlit-authenticator>=0.3",
+    "plotly>=5.22",
+    # ── Security / Auth ────────────────────────────────────────────
+    "bcrypt>=4.1",
+    "passlib>=1.7.4",
+    "python-jose[cryptography]>=3.3",
+    # ── Analysis / Evaluation ──────────────────────────────────────
+    "cvss>=3.0",
+    "scikit-learn>=1.4",
+    "numpy>=1.26",
+    "pandas>=2.0",
+    # ── Reports ────────────────────────────────────────────────────
+    "jinja2>=3.1",
+    "weasyprint>=61",
+    "markdown>=3.6",
+    # ── Vector store (داخل SQLite) ─────────────────────────────────
+    "sqlite-vec>=0.1",
+    # ── Frida (تحليل ديناميكي — Real mode فقط) ──────────────────────
+    "frida-tools>=13.0",
+    # ── HTTP clients ───────────────────────────────────────────────
+    "httpx>=0.27",
+    "requests>=2.31",
+    # ── Dev / Tooling ──────────────────────────────────────────────
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.4",
+    "structlog>=24.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-asyncio", "ruff"]
+
+[tool.setuptools.packages.find]
+include = ["db*", "agents*", "core*", "api*", "mcp_servers*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["."]

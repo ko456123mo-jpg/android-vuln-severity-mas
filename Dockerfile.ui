@@ -1,0 +1,46 @@
+# syntax=docker/dockerfile:1.6
+# =====================================================================
+# Dockerfile.ui — صورة Streamlit (واجهة عربية RTL)
+#
+#   الواجهة تتحدث إلى الـ API عبر HTTP فقط (MAS_API_URL) — لا قاعدة بيانات
+#   ولا نماذج داخل هذه الحاوية (فصل كامل للطبقات).
+#
+# التشغيل:
+#   docker build -f Dockerfile.ui -t mas-ui:1.0.0 .
+#   docker run -p 8501:8501 -e MAS_API_URL=http://api:8000 mas-ui:1.0.0
+# =====================================================================
+FROM python:3.11-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    STREAMLIT_SERVER_HEADLESS=true \
+    STREAMLIT_BROWSER_GATHER_USAGE_STATS=false \
+    MAS_API_URL=http://api:8000
+
+WORKDIR /app
+
+# اعتماديات الواجهة فقط (نحيفة: بلا LangChain/NumPy/WeasyPrint)
+RUN pip install --upgrade pip \
+    && pip install "streamlit>=1.35" "plotly>=5.22" "requests>=2.31"
+
+RUN groupadd --gid 10001 app && useradd --uid 10001 --gid app --create-home app
+
+# أصول الهوية (الشعار/Favicon) — الواجهة تعرضها من مسارات نسبية
+COPY --chown=app:app assets/logo/ /app/assets/logo/
+COPY --chown=app:app .streamlit/ /app/.streamlit/
+COPY --chown=app:app ui/ /app/ui/
+COPY --chown=app:app scripts/docker_ui_entrypoint.sh /app/scripts/docker_ui_entrypoint.sh
+# results/ تُربط كـ volume (نتائج التجربة تُقرأ في الصفحة 08) — لا تُنسخ في الصورة
+RUN chmod +x /app/scripts/docker_ui_entrypoint.sh \
+    && mkdir -p /app/results /app/.streamlit && chown -R app:app /app
+
+USER app
+EXPOSE 8501
+
+# فحص الصحة الداخلي لـ Streamlit (نقطة /_stcore/health)
+HEALTHCHECK --interval=30s --timeout=5s --start-period=25s --retries=3 \
+    CMD curl -fsS http://127.0.0.1:8501/_stcore/health || exit 1
+
+ENTRYPOINT ["/app/scripts/docker_ui_entrypoint.sh"]

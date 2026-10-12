@@ -1,0 +1,107 @@
+# =====================================================================
+# docker-compose.yml — أدوات ومنصة كاملة (المرحلة 8)
+#
+#   الخدمات:
+#     api    → FastAPI (منشور 8000)        — Dockerfile.api
+#     ui     → Streamlit (منشور 8501)      — Dockerfile.ui
+#     mobsf  → MobSF (داخلي 8000 فقط)      — لا تعارض مع الـ api
+#     ollama → نماذج محلية (اختياري)        — profile: ollama
+#
+#   التشغيل:
+#     docker compose up -d                              # api + ui + mobsf
+#     docker compose --profile ollama up -d             # + نماذج محلية
+#     docker compose up -d --build                      # إعادة بناء بعد تعديل
+#
+#   ملاحظات أمنية (تفصيل في docs/security_hardening.md):
+#     • لا خدمة تعمل بـ privileged ولا تقرأ docker.sock.
+#     • كل الخدمات مستخدمون غير root (10001) عدا صور خارجية (mobsf/ollama).
+#     • المتغيرات من .env (غير مُتتبَّع في git) — لا أسرار في هذا الملف.
+# =====================================================================
+name: android-vuln-severity-mas
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    image: mas-api:1.0.0
+    container_name: mas-api
+    restart: unless-stopped
+    env_file: [.env]
+    environment:
+      MAS_ENV: ${MAS_ENV:-production}
+      DATABASE_PATH: /app/data/app.db
+      MOBSF_URL: http://mobsf:8000
+      OLLAMA_BASE_URL: http://ollama:11434
+      MAS_RATE_LIMIT_PER_MINUTE: ${MAS_RATE_LIMIT_PER_MINUTE:-60}
+      MAS_CORS_ORIGINS: ${MAS_CORS_ORIGINS:-}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data          # قاعدة البيانات + APKs + المخرجات الفنية
+      - ./results:/app/results    # نتائج التجربة/القياس
+      - ./config:/app/config:ro   # الإعدادات (قراءة فقط)
+    networks: [mas_network]
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    depends_on:
+      mobsf:
+        condition: service_started
+
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.ui
+    image: mas-ui:1.0.0
+    container_name: mas-ui
+    restart: unless-stopped
+    environment:
+      MAS_API_URL: http://api:8000
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./results:/app/results:ro  # قراءة نتائج التجربة في الصفحة 08
+    networks: [mas_network]
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8501/_stcore/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 25s
+    depends_on:
+      api:
+        condition: service_healthy
+
+  mobsf:
+    image: opensecurity/mobile-security-framework-mobsf:latest
+    container_name: mas-mobsf
+    restart: unless-stopped
+    # داخلي فقط: الـ api يصل إليه عبر اسم الخدمة — لا منفذ منشور للخارج
+    expose:
+      - "8000"
+    volumes:
+      - mobsf_data:/data
+    networks: [mas_network]
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: mas-ollama
+    restart: unless-stopped
+    profiles: ["ollama"]        # اختياري: docker compose --profile ollama up -d
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+    networks: [mas_network]
+
+networks:
+  mas_network:
+    driver: bridge
+
+volumes:
+  mobsf_data:
+  ollama_models:

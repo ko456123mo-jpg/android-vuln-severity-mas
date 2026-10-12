@@ -1,0 +1,67 @@
+# syntax=docker/dockerfile:1.6
+# =====================================================================
+# Dockerfile.api — صورة FastAPI (بناء متعدد المراحل / multi-stage)
+#
+#   المرحلة 1 (builder): تثبيت الاعتماديات في /install (مع أدوات البناء)
+#   المرحلة 2 (runtime): صورة نحيفة بلا أدوات بناء + مستخدم غير root
+#
+# التشغيل:
+#   docker build -f Dockerfile.api -t mas-api:1.0.0 .
+#   docker run -p 8000:8000 -v ./data:/app/data mas-api:1.0.0
+# =====================================================================
+FROM python:3.11-slim AS builder
+
+ENV PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PYTHONDONTWRITEBYTECODE=1
+
+WORKDIR /build
+# أدوات البناء (تُترك خلفها في المرحلة الثانية)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# الاعتماديات فقط أولاً (طبقة مخزَّنة cache-friendly)
+COPY pyproject.toml README.md ./
+RUN pip install --prefix=/install --upgrade pip setuptools wheel \
+    && pip install --prefix=/install .
+
+# =====================================================================
+FROM python:3.11-slim AS runtime
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    MAS_ENV=production \
+    DATABASE_PATH=/app/data/app.db \
+    PATH="/install/bin:${PATH}" \
+    PYTHONPATH="/install/lib/python3.11/site-packages"
+
+# مكتبات نظام مطلوبة زمن التشغيل: WeasyPrint (pango/cairo) + شهادات TLS + curl للفحص
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        libpango-1.0-0 libpangoft2-1.0-0 libcairo2 libgdk-pixbuf-2.0-0 \
+        shared-mime-info fonts-dejavu-core \
+        ca-certificates curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# الاعتماديات المبنية من المرحلة 1
+COPY --from=builder /install /install
+
+# مستخدم غير root — لا privileged mode، UID ثابت للـ volumes
+RUN groupadd --gid 10001 app && useradd --uid 10001 --gid app --create-home app
+
+WORKDIR /app
+COPY --chown=app:app . /app
+RUN mkdir -p /app/data/apks /app/data/artifacts /app/data/reports /app/results \
+    && chown -R app:app /app/data /app/results \
+    && chmod +x scripts/docker_api_entrypoint.sh
+
+USER app
+EXPOSE 8000
+
+# فحص الصحة: /health (معفى من حدّ المعدل) — بلا curl في الصورة النهائية اختياراً
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
+    CMD curl -fsS http://127.0.0.1:8000/health || exit 1
+
+# تهيئة القاعدة عند أول تشغيل ثم uvicorn (بلا --reload في الإنتاج)
+ENTRYPOINT ["/app/scripts/docker_api_entrypoint.sh"]
+CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]

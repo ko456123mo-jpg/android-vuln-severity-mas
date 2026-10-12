@@ -1,0 +1,144 @@
+# =====================================================================
+# قائمة تطبيقات التجربة / Experiment app list (المرحلة 7)
+#
+# ⚠️ expected_vulns هنا «تقدير تخطيطي قبل القياس» — ليست حقيقة مرجعية وليست
+#    نتيجة تجريبية. الحقيقة المرجعية الحقيقية تُملأ يدوياً في
+#    evaluation/dataset/ground_truth/<app_id>.json بواسطة الخبراء (لم تُملأ بعد).
+#
+# الحقول:
+#   id, name, source (رابط رسمي), category, expected_vulns (تقدير),
+#   masvs_categories (النطاقات المتوقعة), package_name, apk_file (اسم الملف المتوقع
+#   في data/apks/)، وcontext (يُزرع في app_context لتشغيل الفحص عليه).
+# =====================================================================
+apps:
+  - id: diva
+    name: "DIVA (Damn Insecure and Vulnerable App)"
+    source: "https://github.com/payatu/diva-android"
+    category: "utility"
+    expected_vulns: 13
+    masvs_categories: ["MASVS-STORAGE", "MASVS-CRYPTO", "MASVS-CODE"]
+    package_name: "jakhar.aseem.diva"
+    apk_file: "diva.apk"
+    context: {data_sensitivity: MEDIUM, industry: utility, user_base_size: small,
+              internet_facing: false, business_criticality: LOW}
+
+  - id: insecurebankv2
+    name: "InsecureBankv2"
+    source: "https://github.com/dineshshetty/Android-InsecureBankv2"
+    category: "banking"
+    expected_vulns: 15
+    masvs_categories: ["MASVS-NETWORK", "MASVS-STORAGE", "MASVS-CRYPTO", "MASVS-AUTH"]
+    package_name: "com.android.insecurebankv2"
+    apk_file: "insecurebankv2.apk"
+    context: {data_sensitivity: HIGH, industry: banking, user_base_size: medium,
+              internet_facing: true, business_criticality: HIGH}
+
+  - id: uncrackable-l1
+    name: "OWASP UnCrackable Level 1"
+    source: "https://github.com/OWASP/owasp-mastg/tree/master/Crackmes/Android/Level_01"
+    category: "utility"
+    expected_vulns: 4
+    masvs_categories: ["MASVS-RESILIENCE", "MASVS-CODE"]
+    package_name: "owasp.mstg.uncrackable1"
+    apk_file: "uncrackable-l1.apk"
+    context: {data_sensitivity: LOW, industry: utility, user_base_size: small,
+              internet_facing: false, business_criticality: LOW}
+
+  - id: uncrackable-l2
+    name: "OWASP UnCrackable Level 2"
+    source: "https://github.com/OWASP/owasp-mastg/tree/master/Crackmes/Android/Level_02"
+    category: "utility"
+    expected_vulns: 5
+    masvs_categories: ["MASVS-RESILIENCE", "MASVS-CODE"]
+    package_name: "owasp.mstg.uncrackable2"
+    apk_file: "uncrackable-l2.apk"
+    context: {data_sensitivity: LOW, industry: utility, user_base_size: small,
+              internet_facing: false, business_criticality: LOW}
+
+  - id: uncrackable-l3
+    name: "OWASP UnCrackable Level 3"
+    source: "https://github.com/OWASP/owasp-mastg/tree/master/Crackmes/Android/Level_03"
+    category: "utility"
+    expected_vulns: 5
+    masvs_categories: ["MASVS-RESILIENCE", "MASVS-CODE"]
+    package_name: "owasp.mstg.uncrackable3"
+    apk_file: "uncrackable-l3.apk"
+    context: {data_sensitivity: LOW, industry: utility, user_base_size: small,
+              internet_facing: false, business_criticality: LOW}
+
+  - id: androgoat
+    name: "AndroGoat"
+    source: "https://github.com/sensepost/AndroGoat"
+    category: "utility"
+    expected_vulns: 16
+    masvs_categories: ["MASVS-STORAGE", "MASVS-CRYPTO", "MASVS-NETWORK", "MASVS-PLATFORM"]
+    package_name: "owasp.sat.agoat"
+    apk_file: "androgoat.apk"
+    context: {data_sensitivity: MEDIUM, industry: utility, user_base_size: small,
+              internet_facing: true, business_criticality: LOW}
+
+  - id: insecure-shop
+    name: "InsecureShop"
+    source: "https://github.com/hax0kartik/InsecureShop"
+    category: "commerce"
+    expected_vulns: 12
+    masvs_categories: ["MASVS-STORAGE", "MASVS-NETWORK", "MASVS-PLATFORM", "MASVS-AUTH"]
+    package_name: "com.insecureshop"
+    apk_file: "insecure-shop.apk"
+    context: {data_sensitivity: MEDIUM, industry: commerce, user_base_size: medium,
+              internet_facing: true, business_criticality: MEDIUM}
+
+  - id: ovaa
+    name: "OVAA (Oversecured Vulnerable Android App)"
+    source: "https://github.com/oversecured/ovaa"
+    category: "commerce"
+    expected_vulns: 13
+    masvs_categories: ["MASVS-PLATFORM", "MASVS-STORAGE", "MASVS-CODE"]
+    package_name: "oversecured.ovaa"
+    apk_file: "ovaa.apk"
+    context: {data_sensitivity: MEDIUM, industry: commerce, user_base_size: small,
+              internet_facing: true, business_criticality: MEDIUM}
+
+  - id: dvba
+    name: "DVBA (Damn Vulnerable Bank App)"
+    source: "https://github.com/rewanthtammana/Damn-Vulnerable-Bank"
+    category: "banking"
+    expected_vulns: 14
+    masvs_categories: ["MASVS-STORAGE", "MASVS-AUTH", "MASVS-NETWORK", "MASVS-CRYPTO"]
+    package_name: "com.app.damnvulnerablebank"
+    apk_file: "dvba.apk"
+    context: {data_sensitivity: HIGH, industry: banking, user_base_size: medium,
+              internet_facing: true, business_criticality: HIGH}
+
+  - id: vuldroid
+    name: "Vuldroid"
+    source: "https://github.com/jaiswalakshansh/Vuldroid"
+    category: "commerce"
+    expected_vulns: 14
+    masvs_categories: ["MASVS-PLATFORM", "MASVS-STORAGE", "MASVS-NETWORK"]
+    package_name: "com.vuldroid.application"
+    apk_file: "vuldroid.apk"
+    context: {data_sensitivity: MEDIUM, industry: commerce, user_base_size: small,
+              internet_facing: true, business_criticality: LOW}
+
+  - id: mstg-hacking-playground
+    name: "MSTG Hacking Playground"
+    source: "https://github.com/OWASP/MASTG-Hacking-Playground"
+    category: "utility"
+    expected_vulns: 10
+    masvs_categories: ["MASVS-STORAGE", "MASVS-PLATFORM", "MASVS-CODE"]
+    package_name: "org.owasp.mstg.hackingplayground"
+    apk_file: "mstg-hacking-playground.apk"
+    context: {data_sensitivity: MEDIUM, industry: utility, user_base_size: small,
+              internet_facing: false, business_criticality: LOW}
+
+  - id: sieve
+    name: "Sieve (Vulnerable Password Manager)"
+    source: "https://github.com/mwrlabs/sieve"
+    category: "utility"
+    expected_vulns: 10
+    masvs_categories: ["MASVS-STORAGE", "MASVS-CRYPTO", "MASVS-AUTH"]
+    package_name: "com.mwr.example.sieve"
+    apk_file: "sieve.apk"
+    context: {data_sensitivity: HIGH, industry: utility, user_base_size: small,
+              internet_facing: false, business_criticality: MEDIUM}

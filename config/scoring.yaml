@@ -1,0 +1,28 @@
+# =====================================================================
+# scoring.yaml — منطق التقييم الموزون / Weighted severity scoring logic
+# final_score = (base × 0.6) + (context × 0.2) + (evidence × 0.2)
+# =====================================================================
+
+weights:
+  base: 0.6
+  context: 0.2
+  evidence: 0.2
+
+# نقاط الأدلة حسب عدد الأدوات المؤكدة + مكافأة التأكيد الديناميكي
+# Evidence points by number of confirming tools + dynamic bonus
+evidence:
+  single_tool: 4.0
+  two_tools: 7.0
+  three_plus_tools: 9.0
+  dynamic_confirmation_bonus: 1.0
+
+# عتبات عامل الثقة — متى نصعّد للمراجعة البشرية
+confidence:
+  review_threshold: 0.75
+  critical_min: 0.90
+
+# فئات الخطورة (متوافقة مع CVSS bands)
+bands:
+  critical: 9.0
+  high: 7.0
+  medium: 4.0

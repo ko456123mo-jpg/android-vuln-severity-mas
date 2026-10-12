@@ -1,0 +1,43 @@
+# آلة حالة الفحص/الوكلاء
+
+> هذا الملف عرض جاهز للتصيير في VS Code / GitHub / Typora (كتلة mermaid).
+> المصدر القابل للتحرير: `state_machine.mmd`
+
+```mermaid
+%%{init: {'theme':'neutral'}}%%
+%% =====================================================================
+%% الشكل 3 — آلة حالة الوكلاء/الفحص (Scan State Machine)
+%% الحالات مطابقة لـ agents/state.py (current_stage) و db: scans.status
+%% =====================================================================
+stateDiagram-v2
+    [*] --> pending : POST /scans/start
+    pending --> running : المهمة الخلفية تبدأ
+
+    state running {
+        [*] --> orchestrating
+        orchestrating --> collecting : خطة الأدوات جاهزة
+        collecting --> collecting : أدوات دينامية متتالية
+        collecting --> extracting : المخرجات جاهزة (معقَّمة)
+        extracting --> extracting : أدوات إضافية (merge + dedup)
+        extracting --> scoring : vulnerabilities[]
+        scoring --> reviewing : assessments[]
+        reviewing --> persisting : تعديلات + أعلام مراجعة
+        persisting --> reporting : كتابة القاعدة
+        reporting --> [*] : تقرير فني + تنفيذي
+    }
+
+    running --> success : كل المراحل اكتملت بلا أخطاء
+    running --> partial : أخطاء جزئية مسجَّلة (errors غير فارغة)
+    running --> failed : فشل حرج (لا ثغرات/قاعدة مقفولة)
+    running --> cancelled : DELETE /scans/{id}
+    success --> [*]
+    partial --> [*]
+    failed --> [*]
+    cancelled --> [*]
+
+    note right of partial
+        الحالة الجزئية مقصودة:
+        أداة واحدة فاشلة لا تُسقط الفحص كاملاً
+        (errors[] + agent_logs تحفظ السبب)
+    end note
+```
