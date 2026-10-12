@@ -125,9 +125,10 @@
 | المستودع | **https://github.com/ko456123mo-jpg/android-vuln-severity-mas** (Public · MIT · الفرع الافتراضي `main`) |
 | الإصدار | **https://github.com/ko456123mo-jpg/android-vuln-severity-mas/releases/tag/v1.0.0** — مرفقان: الحزمة (2999 KiB) + بصمة SHA-256 |
 | المواضيع | **17/17** مسجَّلة |
-| الملفات | **280 على GitHub = 280 متتبَّعاً محلياً** (تطابق تام) |
-| SHA المدفوع | `37a1bd8bbe565891e15d3490beb43ccfbb9cb703` = SHA المحلي |
-| روابط حرجة | `logo.svg` · `01_login.png` · `INSTALL_DOCKER.md` · `BRAND_GUIDE.md` → **200** |
+| الملفات | **280 على GitHub = 280 متتبَّعاً محلياً** (تطابق blob تام مُتحقَّق) |
+| SHA المدفوع (النهائي) | `4e96e9d75a94028e706c98bf2b23d3ec291a69c0` = SHA المحلي |
+| دفعات | دفعتان: `b8db812…37a1bd8` (الإصدار) ثم `4e96e9d` (تصحيح روابط CITATION/CHANGELOG بعد كشفها بالفحص) |
+| روابط حرجة | `logo.svg` · `01_login.png` · `INSTALL_DOCKER.md` · `BRAND_GUIDE.md` → **200** · CITATION.cff/CHANGELOG بلا روابط نائبة |
 | التنظيف الأمني | لا ملفات اعتماد · لا helper محفوظ · **0 ملفاً يحتوي الرمز** · الرمز غير محفوظ في الجلسة |
 
 **الطريقة المستخدمة:** مُساعِد اعتماد **لحظي** في أمر الدفع
