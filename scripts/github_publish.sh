@@ -37,9 +37,14 @@ command -v gh  >/dev/null || fail "gh غير مثبّت — ثبّته من http
 command -v git >/dev/null || fail "git غير مثبّت"
 
 if ! gh auth status >/dev/null 2>&1; then
-  fail "gh غير مصادَق — نفّذ: gh auth login (أو صدّر GITHUB_TOKEN=... ثم أعد التشغيل)"
+  if [ "$DRY_RUN" = "--dry-run" ]; then
+    warn "gh غير مصادَق — [dry-run] يعرض الخطوات بلا تنفيذ. للنشر الفعلي: gh auth login"
+  else
+    fail "gh غير مصادَق — نفّذ: gh auth login (أو صدّر GITHUB_TOKEN=... ثم أعد التشغيل)"
+  fi
+else
+  ok "gh مصادَق: $(gh auth status 2>&1 | head -1)"
 fi
-ok "gh مصادَق: $(gh auth status 2>&1 | head -1)"
 
 [ -z "$(git status --porcelain)" ] || warn "توجد تغييرات غير مُثبَّتة (سيُدفع آخر commit فقط)"
 git rev-parse --verify HEAD >/dev/null 2>&1 || fail "لا يوجد commit بعد — نفّذ git add -A && git commit"
