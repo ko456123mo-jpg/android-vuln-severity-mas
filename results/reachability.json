@@ -1,0 +1,123 @@
+{
+  "generated_at": "2026-10-21 01:36 UTC",
+  "rule_version": "v1.1-fallback",
+  "combinations": 144,
+  "final_min": 4.68,
+  "final_max": 9.3394,
+  "severity_counts": {
+    "High": 71,
+    "Critical": 7,
+    "Medium": 66
+  },
+  "reachable_bands": [
+    "Critical",
+    "High",
+    "Medium"
+  ],
+  "unreachable_bands": [
+    "Low"
+  ],
+  "per_category": {
+    "MASVS-CRYPTO": {
+      "min": 7.68,
+      "max": 9.3394
+    },
+    "MASVS-STORAGE": {
+      "min": 7.08,
+      "max": 8.7394
+    },
+    "MASVS-NETWORK": {
+      "min": 6.78,
+      "max": 8.4394
+    },
+    "MASVS-AUTH": {
+      "min": 6.48,
+      "max": 8.1394
+    },
+    "MASVS-PLATFORM": {
+      "min": 5.88,
+      "max": 7.5394
+    },
+    "MASVS-RESILIENCE": {
+      "min": 5.28,
+      "max": 6.9394
+    },
+    "MASVS-CODE": {
+      "min": 4.68,
+      "max": 6.3394
+    },
+    "UNKNOWN-CATEGORY": {
+      "min": 5.28,
+      "max": 6.9394
+    }
+  },
+  "rules_defined": [
+    "R1-weak-evidence-critical",
+    "R2-strong-evidence-low",
+    "R3-high-context-low",
+    "R4-low-context-critical",
+    "R5-crypto-medium-floor",
+    "R6-code-quality-critical-cap",
+    "R7-low-confidence-critical",
+    "R8-high-confidence-low"
+  ],
+  "rules_fired": {},
+  "dormant_rules": [
+    "R1-weak-evidence-critical",
+    "R2-strong-evidence-low",
+    "R3-high-context-low",
+    "R4-low-context-critical",
+    "R5-crypto-medium-floor",
+    "R6-code-quality-critical-cap",
+    "R7-low-confidence-critical",
+    "R8-high-confidence-low"
+  ],
+  "confidence_values": [
+    0.17,
+    0.23,
+    0.26,
+    0.27,
+    0.32,
+    0.33,
+    0.35,
+    0.36,
+    0.39,
+    0.41,
+    0.42,
+    0.43,
+    0.44,
+    0.45,
+    0.47,
+    0.48,
+    0.5,
+    0.51,
+    0.52,
+    0.53,
+    0.54,
+    0.55,
+    0.57,
+    0.6,
+    0.61,
+    0.63,
+    0.64,
+    0.66,
+    0.67,
+    0.69,
+    0.7,
+    0.72,
+    0.73,
+    0.75,
+    0.76,
+    0.78,
+    0.81,
+    0.82,
+    0.84,
+    0.85,
+    0.87,
+    0.9,
+    0.93,
+    0.94,
+    0.97
+  ],
+  "context_floor_note": "أدنى context_score = 8.4 وأدنى evidence_score = 3.0 (الأرضيات تُرفع الحد الأدنى للدرجة النهائية)"
+}

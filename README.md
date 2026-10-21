@@ -7,6 +7,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.11%2B-blue?logo=python&logoColor=white" alt="Python 3.11+"/>
+  <a href="../../actions/workflows/tests.yml"><img src="../../actions/workflows/tests.yml/badge.svg" alt="Tests"/></a>
   <img src="https://img.shields.io/badge/Tests-331%20passed-brightgreen" alt="331 tests passed"/>
   <img src="https://img.shields.io/badge/License-MIT-yellow" alt="MIT License"/>
   <img src="https://img.shields.io/badge/Version-1.0.0-orange" alt="v1.0.0"/>
@@ -328,14 +329,30 @@ android-vuln-severity-mas/
 
 ## 👨‍💻 المطوّر
 
-**المهندس محمد منير** — Engineer Mohammed Moneer
+**محمد منير** — Mohammed Moneer · مهندس أمن سيبراني
 
 - 📧 [moh123mon456@gmail.com](mailto:moh123mon456@gmail.com)
 - 🐙 [@ko456123mo-jpg](https://github.com/ko456123mo-jpg)
 - 📦 [android-vuln-severity-mas](https://github.com/ko456123mo-jpg/android-vuln-severity-mas)
 
-مشروع تخرّج أكاديمي: **تصميم وتنفيذ نظام متعدد الوكلاء لتقييم خطورة ثغرات تطبيقات
-أندرويد وفق OWASP MASVS** — مع بروتوكول تقييم إحصائي ومواد أطروحة كاملة.
+**ما يقدّمه هذا النظام:** محرك تقييم خطورة شفّاف وقابل للتتبع لتطبيقات الأندرويد،
+مبني على OWASP MASVS، يصلح للاستخدام في تقييمات ما قبل النشر، ومراجعات الاستحواذ
+(Due Diligence)، والاستخدام الأكاديمي القابل لإعادة الإنتاج.
+
+> الأساس المنهجي والبروتوكول الإحصائي والمواد المرجعية الكاملة في [`docs/thesis/`](docs/thesis/) —
+> والنظام مصمَّم ليكون **قابلاً للتشغيل والتحقق**، لا مجرد عرض أكاديمي.
+
+**متاح للعمل الحر:** تقييم أمن تطبيقات الأندرويد · تحليل جنائي رقمي · بناء أدوات أمنية مخصّصة.
+
+## 🔒 الإبلاغ عن ثغرة
+
+راجع [`SECURITY.md`](SECURITY.md). لا تفتح Issue عاماً لأي ثغرة أمنية.
+
+## ⚖️ سياسة الاستخدام
+
+هذا النظام مخصّص للتحليل الدفاعي والأنظمة التي تملك صلاحية تحليلها.
+اقرأ [`USAGE_POLICY.md`](USAGE_POLICY.md) قبل الاستخدام.
+
 
 ## 📜 الترخيص
 
