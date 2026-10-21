@@ -63,7 +63,15 @@ class APIClient:
                 timeout=timeout,
             )
         except requests.RequestException as exc:
-            raise APIError(0, f"تعذر الوصول إلى الخادم: {exc}", path) from exc
+            # لا نُسرّب نصّ استثناء Python الخام إلى واجهة المستخدم؛ الرسالة
+            # يجب أن تُخبره بما يفعل (تشغيل الـ API أو تصحيح MAS_API_URL).
+            raise APIError(
+                0,
+                "تعذر الوصول إلى خادم التحليل على "
+                f"{self.base_url} — تأكد من تشغيله (make run-api) "
+                "أو اضبط متغير البيئة MAS_API_URL.",
+                path,
+            ) from exc
         if response.status_code >= 400:
             try:
                 detail = response.json().get("detail", response.text[:300])

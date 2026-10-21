@@ -66,7 +66,11 @@ def _login_screen() -> None:
     try:
         result = APIClient().login(username.strip(), password)
     except APIError as exc:
-        st.error(f"{t('login_failed')} — HTTP {exc.status_code}: {exc.detail}")
+        if exc.status_code == 0:
+            # خطأ اتصال لا خطأ بيانات اعتماد — لا نعرض "HTTP 0"
+            st.error(f"{t('login_failed')} — {exc.detail}")
+        else:
+            st.error(f"{t('login_failed')} — HTTP {exc.status_code}: {exc.detail}")
         return
     st.session_state[TOKEN_KEY] = result["access_token"]
     st.session_state[USER_KEY] = result["user"]

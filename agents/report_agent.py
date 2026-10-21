@@ -126,30 +126,8 @@ class ReporterAgent(BaseAgent):
     def _deterministic_summaries(
         critical_high: list[dict[str, Any]],
     ) -> tuple[list[dict[str, Any]], str]:
-        """بديل حتمي: ملخصات مشتقة من العناوين والفئات (بلا أرقام مخترعة)."""
-        summaries: list[dict[str, Any]] = []
-        urgency = {
-            "Critical": ("24-48 ساعة", "فورياً: عزل المكوّن المتأثر وإغلاق مسار الاستغلال قبل أي إصدار جديد."),
-            "High": ("أسبوع", "خلال أسبوع: جدولة إصلاح عالي الأولوية مع اختبار تحقق بعد النشر."),
-        }
-        for vuln in critical_high:
-            timeline, action = urgency[vuln["severity"]]
-            summaries.append(
-                {
-                    "vulnerability_id": vuln["id"],
-                    "title_ar": f"ثغرة أمنية تتطلب معالجة عاجلة: {vuln['title']}",
-                    "impact_ar": (
-                        "قد تسمح هذه الثغرة بتسريب بيانات المستخدمين أو تعريض خدمات العمل "
-                        "لاختراق مباشر، ما يهدد الثقة والامتثال التنظيمي."
-                    ),
-                    "action_ar": action,
-                    "timeline_ar": timeline,
-                }
-            )
-        if any(v["severity"] == "Critical" for v in critical_high):
-            risk = "حرج"
-        elif any(v["severity"] == "High" for v in critical_high):
-            risk = "مرتفع"
-        else:
-            risk = "متوسط"
-        return summaries, risk
+        """بديل حتمي — يفوَّض إلى المولّد حتى يتشارك المساران نفس القاعدة."""
+        return (
+            ReportGenerator.deterministic_summaries(critical_high),
+            ReportGenerator.overall_risk_from(critical_high),
+        )

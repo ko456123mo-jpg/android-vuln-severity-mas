@@ -9,6 +9,7 @@
 from __future__ import annotations
 
 import uuid
+from pathlib import Path
 
 import pytest
 
@@ -208,3 +209,46 @@ class TestExports:
         }
         for path in paths.values():
             assert Path(path).exists() and Path(path).stat().st_size > 100
+
+
+class TestExecutiveReportWithoutSuppliedSummaries:
+    """انحدار: مسار POST /reports/{id}/generate لا يمرّر ملخصات.
+
+    كان التقرير التنفيذي يُكتب بقسم «أهم الثغرات الحرجة» فارغاً ودرجة خطر
+    ثابتة على «متوسط» حتى لفحص يحوي ثغرات حرجة — أي تحت-تقدير للخطر في
+    مستند يُسلَّم للعميل.
+    """
+
+    def test_deterministic_summaries_fill_the_critical_section(self, tmp_path):
+        fixture = _make_fixture_scan()
+        scan_id = fixture["scan"]["id"]
+        generator = ReportGenerator(scan_id)
+
+        paths = generator.export_all(tmp_path / str(scan_id))
+        md = Path(paths["executive_md"]).read_text(encoding="utf-8")
+
+        section = md.split("## أهم الثغرات الحرجة")[1].split("## التوصيات")[0]
+        assert "ثغرة أمنية تتطلب معالجة عاجلة" in section, (
+            "قسم الثغرات الحرجة يجب أن يُملأ تلقائياً من بيانات الفحص"
+        )
+
+    def test_overall_risk_is_derived_from_severities(self):
+        fixture = _make_fixture_scan()
+        generator = ReportGenerator(fixture["scan"]["id"])
+        data = generator.collect_data()
+        risk = generator.overall_risk_from(data["vulnerabilities"])
+
+        severities = {v["severity"] for v in data["vulnerabilities"]}
+        if "Critical" in severities:
+            assert risk == "حرج"
+        elif "High" in severities:
+            assert risk == "مرتفع"
+        else:
+            assert risk in ("متوسط", "منخفض")
+
+    def test_overall_risk_helper_is_monotonic(self):
+        assert ReportGenerator.overall_risk_from([{"severity": "Critical"}]) == "حرج"
+        assert ReportGenerator.overall_risk_from([{"severity": "High"}]) == "مرتفع"
+        assert ReportGenerator.overall_risk_from([{"severity": "Medium"}]) == "متوسط"
+        assert ReportGenerator.overall_risk_from([{"severity": "Low"}]) == "منخفض"
+        assert ReportGenerator.overall_risk_from([]) == "منخفض"
