@@ -16,6 +16,9 @@ data/*
 results/*
 !results/.gitkeep
 !results/README.md
+# تقرير الشمولية مُولَّد لكنه مُثبَّت: README يستشهد بأرقامه ويجب أن يكون قابلاً للتحقق
+!results/reachability.md
+!results/reachability.json
 
 # ── حزم الإصدار/التوزيع / Release artifacts ─────────────────────────
 release/
