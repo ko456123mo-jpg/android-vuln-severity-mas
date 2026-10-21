@@ -56,6 +56,19 @@ _DEFAULT_RECOMMENDATION = (
     "according to OWASP MAS best practices."
 )
 
+# الإلحاح التنفيذي لكل درجة — مصدر واحد يشارك فيه الـAgent وواجهة الـAPI
+# حتى لا ينتج مسارٌ تقريراً فارغاً ومسارٌ آخر تقريراً مكتملاً.
+SEVERITY_URGENCY: dict[str, tuple[str, str]] = {
+    "Critical": (
+        "24-48 ساعة",
+        "فورياً: عزل المكوّن المتأثر وإغلاق مسار الاستغلال قبل أي إصدار جديد.",
+    ),
+    "High": (
+        "أسبوع",
+        "خلال أسبوع: جدولة إصلاح عالي الأولوية مع اختبار تحقق بعد النشر.",
+    ),
+}
+
 
 class ReportGenerator:
     """مولّد تقارير فحص واحد (Technical EN + Executive AR)."""
@@ -166,6 +179,51 @@ class ReportGenerator:
         )
         return {"markdown": markdown_text.strip() + "\n", "data": data}
 
+    # ------------------------------------------------------------------
+    # الملخصات التنفيذية الحتمية / Deterministic executive summaries
+    # ------------------------------------------------------------------
+    @staticmethod
+    def critical_high_vulns(vulnerabilities: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        """الثغرات الحرجة والعالية فقط — مدخل الملخص التنفيذي."""
+        return [v for v in vulnerabilities if v.get("severity") in ("Critical", "High")]
+
+    @staticmethod
+    def overall_risk_from(vulnerabilities: list[dict[str, Any]]) -> str:
+        """مستوى الخطر العام مشتق من أعلى درجة موجودة — لا قيمة افتراضية ثابتة."""
+        severities = {v.get("severity") for v in vulnerabilities}
+        if "Critical" in severities:
+            return "حرج"
+        if "High" in severities:
+            return "مرتفع"
+        if "Medium" in severities:
+            return "متوسط"
+        return "منخفض"
+
+    @staticmethod
+    def deterministic_summaries(
+        critical_high: list[dict[str, Any]],
+    ) -> list[dict[str, Any]]:
+        """ملخصات مشتقة من العناوين والدرجات — بلا أرقام أو ادعاءات مخترعة."""
+        summaries: list[dict[str, Any]] = []
+        for vuln in critical_high:
+            urgency = SEVERITY_URGENCY.get(vuln.get("severity"))
+            if urgency is None:
+                continue
+            timeline, action = urgency
+            summaries.append(
+                {
+                    "vulnerability_id": vuln["id"],
+                    "title_ar": f"ثغرة أمنية تتطلب معالجة عاجلة: {vuln['title']}",
+                    "impact_ar": (
+                        "قد تسمح هذه الثغرة بتسريب بيانات المستخدمين أو تعريض خدمات العمل "
+                        "لاختراق مباشر، ما يهدد الثقة والامتثال التنظيمي."
+                    ),
+                    "action_ar": action,
+                    "timeline_ar": timeline,
+                }
+            )
+        return summaries
+
     def generate_executive_report(
         self,
         summaries: list[dict[str, Any]],
@@ -230,14 +288,27 @@ class ReportGenerator:
         self,
         output_dir: str | Path,
         executive_summaries: list[dict[str, Any]] | None = None,
-        overall_risk: str = "متوسط",
+        overall_risk: str | None = None,
     ) -> dict[str, str]:
-        """توليد كل الصيغ (6 ملفات) داخل output_dir وإرجاع خريطة المسارات."""
+        """توليد كل الصيغ (6 ملفات) داخل output_dir وإرجاع خريطة المسارات.
+
+        عند عدم تمرير ملخصات (مثل مسار POST /reports/{id}/generate) تُشتق من
+        بيانات الفحص نفسها: قسم «أهم الثغرات الحرجة» كان يُكتب فارغاً ودرجة
+        الخطر تُثبَّت على «متوسط» حتى لفحص فيه ثغرات حرجة.
+        """
         output = Path(output_dir)
         data = self.collect_data()
 
+        critical_high = self.critical_high_vulns(data["vulnerabilities"])
+        if executive_summaries is None:
+            executive_summaries = self.deterministic_summaries(critical_high)
+        if overall_risk is None:
+            # الخطر العام يُشتق من كل الثغرات لا من الشريحة الحرجة/العالية فقط؛
+            # لكن لا يجوز أن يهبط تحت أعلى درجة موجودة في تلك الشريحة.
+            overall_risk = self.overall_risk_from(data["vulnerabilities"])
+
         tech = self.generate_technical_report(data)
-        execu = self.generate_executive_report(executive_summaries or [], overall_risk, data)
+        execu = self.generate_executive_report(executive_summaries, overall_risk, data)
 
         paths: dict[str, str] = {}
         paths["technical_md"] = self.export_markdown(

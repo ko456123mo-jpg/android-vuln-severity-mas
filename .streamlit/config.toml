@@ -18,3 +18,7 @@ gatherUsageStats = false
 [client]
 toolbarMode = "minimal"
 showErrorDetails = false
+# التنقل يُبنى صراحةً عبر st.navigation في app.py (عناوين مترجمة وحسب الدور).
+# بلا هذا السطر يضيف Streamlit تنقلاً ثانياً من أسماء ملفات pages/ بالإنجليزية،
+# فيظهر للزائر في شاشة الدخول قبل أي مصادقة.
+showSidebarNavigation = false
