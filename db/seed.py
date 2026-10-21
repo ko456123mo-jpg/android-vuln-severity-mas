@@ -10,6 +10,8 @@ Safe to run multiple times: يتخطى السجلات الموجودة.
 """
 from __future__ import annotations
 
+import os
+
 import bcrypt
 from sqlalchemy import func, select
 
@@ -19,8 +21,11 @@ from db.models import KnowledgeBase, SeverityRule, Tool, User
 # ---------------------------------------------------------------------
 # 1) المستخدم الافتراضي / Default admin user
 # ---------------------------------------------------------------------
-ADMIN_USERNAME = "admin"
-ADMIN_PASSWORD = "admin123"
+ADMIN_USERNAME = os.getenv("MAS_ADMIN_USERNAME", "admin")
+# بيانات البذر الافتراضية للتجربة المحلية فقط. MAS_ADMIN_PASSWORD (أو
+# ADMIN_PASSWORD) يتجاوزها — كان التحقق الأمني في core/security/secrets.py
+# يقرأ المتغير بينما البذر يتجاهله، فتُنشر كلمة المرور الافتراضية فعلياً.
+ADMIN_PASSWORD = os.getenv("MAS_ADMIN_PASSWORD") or os.getenv("ADMIN_PASSWORD") or "admin123"
 ADMIN_ROLE = "admin"
 
 # ---------------------------------------------------------------------
